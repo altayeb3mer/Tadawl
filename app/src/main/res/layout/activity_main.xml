@@ -6,8 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".Activity.MainActivity">
 
+    <com.example.tadawl.Utils.CustomViewPager
+        android:layoutDirection="rtl"
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="30dp"
+        />
 
 <RelativeLayout
+    android:background="@android:color/transparent"
+    android:id="@+id/r1"
     android:layout_width="match_parent"
     android:layout_height="70dp"
     app:layout_constraintBottom_toBottomOf="parent">
@@ -15,8 +25,17 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/shape_b_nav_bg">
-
+        >
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/btn_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_b_nav_bg"
+            app:menu="@menu/btn_nav"
+            app:labelVisibilityMode="unlabeled"
+            android:theme="@style/BottomNavigationView"
+            app:itemIconTint="@drawable/bottom_navigation_selector"
+            />
     </LinearLayout>
     <ImageView
         android:scaleType="center"
@@ -26,6 +45,7 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/shape_add_bg"/>
 </RelativeLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

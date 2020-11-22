@@ -6,4 +6,5 @@
 
     <color name="colorSecondary">#267CB1</color>
     <color name="colorBackground">#FAFAFA</color>
+    <color name="defaultColor">#808080</color>
 </resources>
