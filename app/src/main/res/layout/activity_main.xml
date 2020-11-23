@@ -4,15 +4,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.MainActivity">
+    tools:context=".Activity.MainActivity"
+    android:layoutDirection="rtl">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/shape_toolbar_bg"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_collapseMode="pin">
 
+        <RelativeLayout
+            android:id="@+id/r2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/laySearch"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_small_size"
+                android:layout_marginRight="@dimen/margin_small_size"
+                android:background="@drawable/shape_back_circle"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_search" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_small_size"
+                android:layout_marginRight="@dimen/margin_small_size"
+                android:layout_toRightOf="@+id/laySearch"
+                android:scaleType="center"
+                android:src="@drawable/ic_notifications" />
+
+
+            <LinearLayout
+                android:id="@+id/nav_drawer_lay"
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_small_size"
+                android:layout_marginRight="@dimen/margin_small_size"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/margin_small_size"
+                    android:layout_marginRight="@dimen/margin_small_size"
+                    android:background="@android:color/white" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/margin_small_size"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="@dimen/margin_small_size"
+                    android:background="@android:color/white" />
+
+                <View
+                    android:layout_width="15dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="@dimen/margin_small_size"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="@dimen/margin_small_size"
+                    android:background="@android:color/white" />
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
     <com.example.tadawl.Utils.CustomViewPager
         android:layoutDirection="rtl"
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingBottom="20dp"
         />
 
 <RelativeLayout

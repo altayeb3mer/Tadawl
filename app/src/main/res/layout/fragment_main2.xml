@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layoutDirection="rtl">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:background="@drawable/shape_frag_top_bg">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -18,7 +19,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="?actionBarSize"
                 android:orientation="vertical">
 
                 <TextView
@@ -30,85 +30,36 @@
                     android:textSize="25sp"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"/>
-            </LinearLayout>
-
-
-            <androidx.appcompat.widget.Toolbar
-                android:background="@drawable/shape_toolbar_bg"
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                app:layout_collapseMode="pin">
 
                 <RelativeLayout
-                    android:id="@+id/r1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:id="@+id/laySearch"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/margin_small_size"
-                        android:layout_marginRight="@dimen/margin_small_size"
-                        android:background="@drawable/shape_back_circle"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/ic_search" />
-                    </LinearLayout>
-
-                    <ImageView
-                        android:layout_width="37dp"
-                        android:layout_height="37dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/margin_small_size"
-                        android:layout_marginRight="@dimen/margin_small_size"
-                        android:layout_toRightOf="@+id/laySearch"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_notifications" />
-
-
-                    <LinearLayout
-                        android:layout_width="37dp"
-                        android:layout_height="37dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/margin_small_size"
-                        android:layout_marginRight="@dimen/margin_small_size"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginLeft="@dimen/margin_small_size"
-                            android:layout_marginRight="@dimen/margin_small_size"
-                            android:background="@android:color/white" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginLeft="@dimen/margin_small_size"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="@dimen/margin_small_size"
-                            android:background="@android:color/white" />
-
-                        <View
-                            android:layout_width="15dp"
-                            android:layout_height="1dp"
-                            android:layout_gravity="right"
-                            android:layout_marginLeft="@dimen/margin_small_size"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="@dimen/margin_small_size"
-                            android:background="@android:color/white" />
-                    </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="30dp">
+                    <com.google.android.material.tabs.TabLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:id="@+id/tabLayout"
+                        android:background="@android:color/transparent"
+                        app:tabMode="scrollable"
+                        app:tabGravity="fill"
+                        android:layoutDirection="rtl"
+                        tools:targetApi="jelly_bean_mr1"
+                        app:tabBackground="@android:color/transparent"
+                        app:tabSelectedTextColor="@android:color/white"
+                        app:tabTextColor="#808080"
+                        app:tabIndicatorHeight="2dp"
+                        app:tabPaddingStart="5dp"
+                        app:tabPaddingEnd="5dp"
+                        style="@style/MyTabLayout"
+                        />
+                    <com.example.tadawl.Utils.CustomViewPager
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/viewpager"
+                        android:layoutDirection="rtl"
+                        />
                 </RelativeLayout>
-            </androidx.appcompat.widget.Toolbar>
+            </LinearLayout>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

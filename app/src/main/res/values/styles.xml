@@ -8,7 +8,23 @@
 
         <item name="android:fontFamily">@font/tajawalmedium</item>
     </style>
+
+
+    //nav style
     <style name="BottomNavigationView" parent="Widget.Design.BottomNavigationView">
         <item name="colorPrimary">@color/colorAccent</item>
+    </style>
+
+
+    //tab style
+    <style name="MyTabLayout" parent="Base.Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/MyTabTextAppearance</item>
+    </style>
+
+    <style name="MyTabTextAppearance" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textSize">@dimen/txt_normal_size</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

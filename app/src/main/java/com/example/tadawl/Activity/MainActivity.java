@@ -3,12 +3,15 @@ package com.example.tadawl.Activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.tadawl.Fragment.Fragment2;
@@ -20,13 +23,16 @@ import com.example.tadawl.Utils.CustomViewPager;
 import com.example.tadawl.Utils.ViewPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity implements  BottomNavigationView.OnNavigationItemSelectedListener,NavigationView.OnNavigationItemSelectedListener{
+
 
     BottomNavigationView bottomNavigationView;
     private CustomViewPager viewPager;
     DrawerLayout drawerLayout;
     public static NavigationView navigationView;
+    LinearLayout nav_drawer_lay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
     }
 
     private void init() {
+        nav_drawer_lay =  findViewById(R.id.nav_drawer_lay);
         viewPager =  findViewById(R.id.viewpager);
         bottomNavigationView = findViewById(R.id.btn_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -43,6 +50,12 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
         navigationView = findViewById(R.id.n_view);
         navigationView.setItemIconTintList(null);
 
+        nav_drawer_lay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
         navigationView.setNavigationItemSelectedListener(this);
 
 //        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
