@@ -7,6 +7,7 @@
     app:cardCornerRadius="@dimen/margin_normal_size"
     android:layoutDirection="rtl">
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_margin="@dimen/margin_normal_size"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -28,7 +29,8 @@
                 android:layout_above="@+id/b_lay"
                 android:orientation="vertical">
                 <TextView
-                    android:layout_margin="@dimen/margin_small_size"
+                    android:layout_marginLeft="@dimen/margin_small_size"
+                    android:layout_marginRight="@dimen/margin_small_size"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -50,8 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="@dimen/margin_normal_size">
+                android:layout_alignParentBottom="true">
                 <TextView
                     android:paddingLeft="@dimen/margin_small_size"
                     android:paddingRight="@dimen/margin_small_size"
@@ -112,7 +113,6 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/margin_small_size"
                 app:cardCornerRadius="@dimen/margin_normal_size">
                 <ImageView
                     android:layout_width="match_parent"
