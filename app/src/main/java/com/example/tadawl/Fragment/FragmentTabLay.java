@@ -55,5 +55,6 @@ public class FragmentTabLay extends Fragment {
         }
         adapterTabAds = new AdapterTabAds(getActivity(),arrayList);
         recyclerView.setAdapter(adapterTabAds);
+        recyclerView.smoothScrollToPosition(arrayList.size());
     }
 }

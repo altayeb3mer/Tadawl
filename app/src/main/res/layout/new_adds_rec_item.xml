@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="130dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/margin_normal_size"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:background="@drawable/shape_new_ads_bg"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="@dimen/margin_large_size"
+                android:layout_margin="1dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/hose1"/>
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="منزل للبيع"
+            android:layout_alignParentBottom="true"
+            android:textSize="@dimen/txt_small_size"
+            android:gravity="center"
+            android:paddingLeft="@dimen/margin_large_size"
+            android:paddingRight="@dimen/margin_large_size"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:background="@drawable/shape_txt_new_adds_bg"
+            android:textColor="@android:color/white"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginTop="@dimen/margin_normal_size"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="50 مليار"
+        android:layout_alignParentBottom="true"
+        android:textSize="@dimen/txt_small_size"
+        android:gravity="center"
+        android:paddingLeft="@dimen/margin_large_size"
+        android:paddingRight="@dimen/margin_large_size"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="@color/priceBg"
+        />
+    <View
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/margin_small_size"
+        android:layout_width="50dp"
+        android:layout_height="5dp"
+        android:background="@drawable/shape_view_bg"/>
+
+
+</LinearLayout>

@@ -5,19 +5,22 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tadawl.Adapter.AdapterTabAds;
+import com.example.tadawl.Adapter.AdapterNewAds;
+import com.example.tadawl.Model.ModelNewAds;
 import com.google.android.material.tabs.TabLayout;
 
 import com.example.tadawl.R;
 import com.example.tadawl.Utils.CustomViewPager;
-import com.example.tadawl.Utils.ViewPagerAdapter;
+import com.example.tadawl.Adapter.ViewPagerAdapter;
+
+import java.util.ArrayList;
 
 
 public class FragmentMain extends Fragment {
@@ -36,6 +39,9 @@ public class FragmentMain extends Fragment {
     TabLayout tableLayout;
     CustomViewPager customViewPager;
 
+    RecyclerView recycler;
+    AdapterNewAds adapterNewAds;
+    ArrayList <ModelNewAds> arrayList;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,15 +54,30 @@ public class FragmentMain extends Fragment {
     }
 
     private void init() {
+        recycler = view.findViewById(R.id.recycler);
         tableLayout = view.findViewById(R.id.tabLayout);
         customViewPager = view.findViewById(R.id.viewpager);
 
         initTabLayout();
+        initAdapterNewAds();
+
+    }
+
+    private void initAdapterNewAds() {
+        arrayList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            ModelNewAds modelNewAds=new ModelNewAds();
+            modelNewAds.setId(i+"");
+            arrayList.add(modelNewAds);
+        }
+        adapterNewAds = new AdapterNewAds(getActivity(),arrayList);
+        recycler.setAdapter(adapterNewAds);
 
     }
 
     private void initTabLayout() {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
+        FragmentManager fragmentManager=getChildFragmentManager();
+        ViewPagerAdapter adapter = new ViewPagerAdapter(fragmentManager);
 
         FragmentTabLay fragmentTabLay1 = new FragmentTabLay("1");
         FragmentTabLay fragmentTabLay2 = new FragmentTabLay("2");
@@ -69,5 +90,8 @@ public class FragmentMain extends Fragment {
         tableLayout.setupWithViewPager(customViewPager);
 
     }
+
+
+
 
 }

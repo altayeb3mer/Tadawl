@@ -8,7 +8,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/shape_frag_top_bg">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -24,7 +24,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_large_size"
+                    android:layout_marginTop="@dimen/margin_small_size"
                     android:layout_marginRight="@dimen/margin_large_size"
                     android:text="الرئيسية"
                     android:textSize="25sp"
@@ -32,6 +32,7 @@
                     android:textStyle="bold"/>
 
                 <RelativeLayout
+                    android:layoutDirection="rtl"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="30dp">
@@ -53,10 +54,10 @@
                         style="@style/MyTabLayout"
                         />
                     <com.example.tadawl.Utils.CustomViewPager
+                        android:layout_below="@+id/tabLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="210dp"
                         android:id="@+id/viewpager"
-                        android:layoutDirection="rtl"
                         />
                 </RelativeLayout>
             </LinearLayout>
@@ -75,9 +76,46 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:orientation="vertical">
-
+            <View
+                android:layout_margin="@dimen/margin_normal_size"
+                android:layout_width="130dp"
+                android:layout_height="10dp"
+                android:background="@drawable/shape_view_bg"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small_size"
+                    android:layout_marginRight="@dimen/margin_large_size"
+                    android:layout_marginLeft="@dimen/margin_normal_size"
+                    android:text="إعلانات جديدة"
+                    android:textSize="20sp"
+                    android:textColor="@color/newAdsTitleColor"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small_size"
+                    android:layout_marginRight="@dimen/margin_large_size"
+                    android:layout_marginLeft="@dimen/margin_normal_size"
+                    android:text="عرض الكل"
+                    android:textSize="@dimen/txt_normal_size"
+                    android:textStyle="bold"
+                    android:layout_alignParentLeft="true"/>
+            </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/recycler"
+                app:spanCount="1"
+                tools:itemCount="10"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                tools:listitem="@layout/new_adds_rec_item"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

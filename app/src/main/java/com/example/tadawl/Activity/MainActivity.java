@@ -7,11 +7,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.tadawl.Fragment.Fragment2;
@@ -20,10 +18,9 @@ import com.example.tadawl.Fragment.Fragment4;
 import com.example.tadawl.Fragment.FragmentMain;
 import com.example.tadawl.R;
 import com.example.tadawl.Utils.CustomViewPager;
-import com.example.tadawl.Utils.ViewPagerAdapter;
+import com.example.tadawl.Adapter.ViewPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity implements  BottomNavigationView.OnNavigationItemSelectedListener,NavigationView.OnNavigationItemSelectedListener{
 

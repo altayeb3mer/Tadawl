@@ -1,4 +1,4 @@
-package com.example.tadawl.Utils;
+package com.example.tadawl.Adapter;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
