@@ -119,6 +119,7 @@
             />
     </LinearLayout>
     <ImageView
+        android:id="@+id/addPost"
         android:scaleType="center"
         android:src="@drawable/ic_add"
         android:layout_width="40dp"

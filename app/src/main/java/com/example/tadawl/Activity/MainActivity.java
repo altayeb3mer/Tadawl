@@ -1,9 +1,11 @@
 package com.example.tadawl.Activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -24,12 +26,12 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements  BottomNavigationView.OnNavigationItemSelectedListener,NavigationView.OnNavigationItemSelectedListener{
 
-
     BottomNavigationView bottomNavigationView;
     private CustomViewPager viewPager;
     DrawerLayout drawerLayout;
     public static NavigationView navigationView;
     LinearLayout nav_drawer_lay;
+    ImageView addPost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
     }
 
     private void init() {
+        addPost =  findViewById(R.id.addPost);
         nav_drawer_lay =  findViewById(R.id.nav_drawer_lay);
         viewPager =  findViewById(R.id.viewpager);
         bottomNavigationView = findViewById(R.id.btn_navigation);
@@ -55,9 +58,12 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
         });
         navigationView.setNavigationItemSelectedListener(this);
 
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
-//        drawerLayout.setDrawerListener(toggle);
-//        toggle.syncState();
+        addPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,AddNewPost.class));
+            }
+        });
         setupViewPager(viewPager);
     }
 
@@ -80,10 +86,15 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
                 switchToFragment(4);
                 break;
             }
+
+
+
+
+
+
         }
         return true;
     }
-
 
     public void switchToFragment(int f_no) {
 //        FragmentManager manager = getSupportFragmentManager();
@@ -127,10 +138,10 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
         viewPager.setAdapter(adapter);
     }
 
-
     private void SetNavigationItemSelected(int id){
         bottomNavigationView.getMenu().findItem(id).setChecked(true);
     }
+
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {

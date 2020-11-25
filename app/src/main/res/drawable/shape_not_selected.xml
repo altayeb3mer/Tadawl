@@ -5,7 +5,7 @@
 
     <solid
         android:color="@android:color/white"/>
-    <stroke android:color="@color/newAdsTitleColor" android:width="1.5dp"/>
+<!--    <stroke android:color="@color/newAdsTitleColor" android:width="1.5dp"/>-->
     <!--    <gradient android:angle="180" android:startColor="@color/colorPrimary" android:endColor="@color/colorSecondary"/>-->
     <corners android:radius="20dp"/>
 
