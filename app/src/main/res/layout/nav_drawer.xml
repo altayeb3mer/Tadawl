@@ -25,7 +25,6 @@ tools:openDrawer="start">
     app:itemTextColor="@color/newAdsTitleColor"
     style="@style/NavigationViewStyle"
     />
-
 </androidx.drawerlayout.widget.DrawerLayout>
 
 </LinearLayout>

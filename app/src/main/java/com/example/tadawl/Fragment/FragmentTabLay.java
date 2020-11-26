@@ -46,6 +46,7 @@ public class FragmentTabLay extends Fragment {
     private void init() {
         arrayList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.recycler);
+//        recyclerView.setNestedScrollingEnabled(false);
         linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
         recyclerView.setLayoutManager(linearLayoutManager);
         for (int i = 0; i < 10; i++) {
