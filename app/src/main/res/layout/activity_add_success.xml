@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
             android:textColor="@android:color/white"
-            android:textSize="40sp"
+            android:textSize="45sp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_normal_size"
                 android:textColor="@color/newAdsTitleColor"
-                android:textSize="25sp"
+                android:textSize="27sp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:textStyle="bold"
@@ -80,7 +80,7 @@
             <RelativeLayout
                 android:id="@+id/relativeBackMain"
                 android:layout_width="250dp"
-                android:layout_height="40dp"
+                android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/shape_bg_back_to_main">

@@ -22,7 +22,8 @@ tools:openDrawer="start">
     android:id="@+id/n_view"
     app:headerLayout="@layout/n_header"
     app:menu="@menu/nav_menu"
-    app:itemTextColor="@color/colorPrimary"
+    app:itemTextColor="@color/newAdsTitleColor"
+    style="@style/NavigationViewStyle"
     />
 
 </androidx.drawerlayout.widget.DrawerLayout>

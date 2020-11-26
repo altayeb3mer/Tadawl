@@ -6,7 +6,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="android:fontFamily">@font/tajawalmedium</item>
+        <item name="android:fontFamily">@font/stc</item>
     </style>
 
 
@@ -27,4 +27,14 @@
         <item name="textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    //nav style
+    <style name="NavigationViewStyle">
+        <item name="android:textSize">@dimen/txt_large_size</item> <!-- menu item text size-->
+        <item name="android:listPreferredItemHeightSmall">40dp</item><!-- menu item height-->
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+
 </resources>

@@ -86,6 +86,17 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
                 switchToFragment(4);
                 break;
             }
+            //nav menu
+            case R.id.nav_menu_sc1:{
+                startActivity(new Intent(getApplicationContext(),Login.class));
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+            }
+            case R.id.nav_menu_sc2:{
+                startActivity(new Intent(getApplicationContext(),Register.class));
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+            }
 
 
 

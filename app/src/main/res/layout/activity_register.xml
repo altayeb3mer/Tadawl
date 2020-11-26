@@ -35,9 +35,11 @@
     >
     <LinearLayout
         android:layout_gravity="center"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginRight="@dimen/margin_large_size"
+        android:layout_marginLeft="@dimen/margin_large_size"
         >
         <TextView
             android:textStyle="bold"
@@ -51,15 +53,17 @@
         <com.google.android.material.textfield.TextInputLayout
             android:padding="@dimen/margin_small_size"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@drawable/shape_edt_bg"
             android:layout_marginTop="@dimen/margin_normal_size">
             <com.google.android.material.textfield.TextInputEditText
+                android:drawableRight="@drawable/ic_profile_gray"
+                android:drawablePadding="@dimen/margin_small_size"
                 android:background="@android:color/transparent"
                 android:layout_marginLeft="@dimen/margin_small_size"
                 android:layout_marginRight="@dimen/margin_small_size"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="match_parent"
                 android:hint="رقم الهاتف"
                 android:gravity="center_vertical"
                 android:textColor="@color/colorPrimary"
@@ -69,15 +73,17 @@
         <com.google.android.material.textfield.TextInputLayout
             android:padding="@dimen/margin_small_size"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@drawable/shape_edt_bg"
             android:layout_marginTop="@dimen/margin_normal_size">
             <com.google.android.material.textfield.TextInputEditText
+                android:drawableRight="@drawable/ic_profile_gray"
+                android:drawablePadding="@dimen/margin_small_size"
                 android:background="@android:color/transparent"
                 android:layout_marginLeft="@dimen/margin_small_size"
                 android:layout_marginRight="@dimen/margin_small_size"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="match_parent"
                 android:hint="الاسم"
                 android:gravity="center_vertical"
                 android:textColor="@color/colorPrimary"
@@ -88,55 +94,57 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@drawable/shape_edt_bg"
             android:layout_marginTop="@dimen/margin_normal_size"
             app:passwordToggleEnabled="true"
             android:padding="@dimen/margin_small_size">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:drawableRight="@drawable/ic_profile_gray"
+                    android:drawablePadding="@dimen/margin_small_size"
                     android:background="@android:color/transparent"
                     android:layout_marginLeft="@dimen/margin_small_size"
                     android:layout_marginRight="@dimen/margin_small_size"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="match_parent"
                     android:hint="كلمة السر"
                     android:gravity="center_vertical"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/txt_normal_size"
                     android:text="0925510574"
-                    android:inputType="textPassword"
-                    android:drawableRight="@drawable/ic_pass"/>
+                    android:inputType="textPassword"/>
 
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@drawable/shape_edt_bg"
             android:layout_marginTop="@dimen/margin_normal_size"
             app:passwordToggleEnabled="true"
             android:padding="@dimen/margin_small_size">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:drawableRight="@drawable/ic_profile_gray"
+                    android:drawablePadding="@dimen/margin_small_size"
                     android:background="@android:color/transparent"
                     android:layout_marginLeft="@dimen/margin_small_size"
                     android:layout_marginRight="@dimen/margin_small_size"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="match_parent"
                     android:hint="اعادة كلمة السر"
                     android:gravity="center_vertical"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/txt_normal_size"
                     android:text="0925510574"
-                    android:inputType="textPassword"
-                    android:drawableRight="@drawable/ic_pass"/>
+                    android:inputType="textPassword"/>
 
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="100dp"
+            android:layout_width="130dp"
             android:layout_height="50dp"
             android:text="تسجـــيل"
             android:layout_marginTop="@dimen/margin_large_size"

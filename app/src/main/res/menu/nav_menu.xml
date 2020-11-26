@@ -13,45 +13,60 @@
         <group android:checkableBehavior="none"
             android:id="@+id/third_menu_group">
             <item
+                android:icon="@drawable/ic_share"
                 android:id="@+id/nav_menu_setting"
-                android:title="الضبط"
+                android:title="دعوة أصدقاء"
+                />
+            <item
+                android:icon="@drawable/ic_favorite"
+                android:title="المفضلة"
                 />
         </group>
-        <group android:checkableBehavior="none"
-            android:id="@+id/fourth_menu_group">
-            <item
-                android:id="@+id/nav_menu_sc1"
-                android:title=" تسجيل الدخول"
-                />
-            <item
-                android:id="@+id/nav_menu_sc2"
-                android:title=" تسجيل جديد"
-                />
-            <item
-                android:id="@+id/nav_menu_sc3"
-                android:title=" كود التاكيد"
-                />
-            <item
-                android:id="@+id/nav_menu_sc4"
-                android:title=" طلب حالي"
-                />
-            <item
-                android:id="@+id/nav_menu_sc5"
-                android:title=" السلة"
-                />
-            <item
-                android:id="@+id/nav_menu_sc6"
-                android:title=" عرض الخرائط"
-                />
-            <item
-                android:id="@+id/nav_menu_sc7"
-                android:title=" الدفع الالكتروني"
-                />
-        </group>
+<!--        <group android:checkableBehavior="none"-->
+<!--            android:id="@+id/fourth_menu_group">-->
+<!--            <item-->
+<!--                android:id="@+id/nav_menu_sc1"-->
+<!--                android:title=" تسجيل الدخول"-->
+<!--                />-->
+<!--            <item-->
+<!--                android:id="@+id/nav_menu_sc2"-->
+<!--                android:title=" تسجيل جديد"-->
+<!--                />-->
+<!--            <item-->
+<!--                android:id="@+id/nav_menu_sc3"-->
+<!--                android:title=" كود التاكيد"-->
+<!--                />-->
+<!--            <item-->
+<!--                android:id="@+id/nav_menu_sc4"-->
+<!--                android:title=" طلب حالي"-->
+<!--                />-->
+<!--            <item-->
+<!--                android:id="@+id/nav_menu_sc5"-->
+<!--                android:title=" السلة"-->
+<!--                />-->
+<!--            <item-->
+<!--                android:id="@+id/nav_menu_sc6"-->
+<!--                android:title=" عرض الخرائط"-->
+<!--                />-->
+<!--            <item-->
+<!--                android:id="@+id/nav_menu_sc7"-->
+<!--                android:title=" الدفع الالكتروني"-->
+<!--                />-->
+<!--        </group>-->
         <group>
             <item
-                android:id="@+id/nav_menu_logout"
-                android:title="تسجيل خروج"
+                android:icon="@drawable/ic_about"
+                android:id="@+id/nav_menu_sc1"
+                android:title="الدعم"
+                />
+            <item
+                android:icon="@drawable/ic_about"
+                android:id="@+id/nav_menu_sc2"
+                android:title="حول"
+                />
+            <item
+                android:icon="@drawable/ic_log_out"
+                android:title="خروج"
                 />
         </group>
     </group>

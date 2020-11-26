@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="130dp"
+    android:layout_width="88dp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/margin_normal_size"
@@ -10,7 +10,7 @@
     <RelativeLayout
         android:background="@drawable/shape_new_ads_bg"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         >
         <RelativeLayout
             android:layout_width="match_parent"
@@ -31,7 +31,7 @@
         <TextView
             android:textStyle="bold"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="25dp"
             android:text="منزل للبيع"
             android:layout_alignParentBottom="true"
             android:textSize="@dimen/txt_small_size"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:text="50 مليار"
         android:layout_alignParentBottom="true"
-        android:textSize="@dimen/txt_small_size"
+        android:textSize="11dp"
         android:gravity="center"
         android:paddingLeft="@dimen/margin_large_size"
         android:paddingRight="@dimen/margin_large_size"
@@ -63,9 +63,9 @@
     <View
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/margin_small_size"
-        android:layout_width="50dp"
+        android:layout_width="35dp"
         android:layout_height="5dp"
-        android:background="@drawable/shape_view_bg"/>
+        android:background="@drawable/shape_view_bg_dark_color"/>
 
 
 </LinearLayout>
