@@ -1,15 +1,19 @@
 package com.example.tadawl.Adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.tadawl.Activity.PostDetails;
 import com.example.tadawl.Model.ModelAds;
 import com.example.tadawl.R;
 
@@ -25,7 +29,7 @@ public class AdapterTabAds extends RecyclerView.Adapter<AdapterTabAds.ViewHolder
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private Activity activity;
-    RelativeLayout container;
+    RelativeLayout contentainer;
     public AdapterTabAds(Activity activity, ArrayList<ModelAds> r) {
         this.mInflater = LayoutInflater.from(activity);
         this.arrayList = r;
@@ -47,6 +51,12 @@ public class AdapterTabAds extends RecyclerView.Adapter<AdapterTabAds.ViewHolder
         ModelAds item = arrayList.get(position);
 //        Glide.with(activity).load(URL.ROOT_IMG+item.getImgUrl())
 //                .into(holder.imageView);
+        holder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.startActivity(new Intent(activity, PostDetails.class));
+            }
+        });
     }
 
     @Override
@@ -69,11 +79,13 @@ public class AdapterTabAds extends RecyclerView.Adapter<AdapterTabAds.ViewHolder
 
         ImageView imageView;
 
+        CardView container;
 
         ViewHolder(View itemView) {
             super(itemView);
 //            imageView = itemView.findViewById(R.id.img);
 
+            container = itemView.findViewById(R.id.container);
         }
 
         @Override
