@@ -11,5 +11,6 @@
     <color name="priceBg">#FF2323</color>
     <color name="views_color">#727093</color>
     <color name="newAdsTitleColor">#19164F</color>
+    <color name="txtOrange">#E5B519</color>
     //#FF2323
 </resources>

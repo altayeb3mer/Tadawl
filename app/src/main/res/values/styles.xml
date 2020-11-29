@@ -35,6 +35,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-
+    <style name="optionMenuStyle">
+        <item name="android:src">@drawable/ic_option_menu</item>
+<!--        <item name="android:background">?android:attr/actionBarItemBackground</item>-->
+<!--        <item name="android:contentDescription">@string/action_menu_overflow_description</item>-->
+    </style>
 
 </resources>

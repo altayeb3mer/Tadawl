@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.PostDetails"></activity>
+        <activity android:name=".Activity.MyAds"></activity>
+        <activity android:name=".Activity.PostDetails" />
         <activity android:name=".Activity.AddSuccess" />
         <activity android:name=".Activity.AddNewPost" />
         <activity android:name=".Activity.Register" />

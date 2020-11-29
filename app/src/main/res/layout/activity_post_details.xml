@@ -15,7 +15,9 @@
         android:layout_height="?actionBarSize"
         android:background="@android:color/transparent"
         app:layout_collapseMode="pin"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layoutDirection="rtl"
+        android:gravity="center_vertical|start">
 
         <RelativeLayout
             android:id="@+id/r2"
@@ -38,6 +40,22 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_arrow_back" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layMenu"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_small_size"
+                android:layout_marginRight="@dimen/margin_small_size"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_option_menu" />
             </LinearLayout>
 
 
@@ -84,71 +102,178 @@
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent">
-
-
-            <androidx.cardview.widget.CardView
-                android:background="@color/colorBackground"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_large_size"
+            android:layout_marginBottom="@dimen/margin_large_size"
+            >
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardCornerRadius="@dimen/margin_normal_size"
-                android:layout_margin="@dimen/margin_large_size">
-                <LinearLayout
+                android:layout_height="match_parent">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card"
+                    android:background="@color/colorBackground"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <androidx.cardview.widget.CardView
-                        app:cardCornerRadius="@dimen/margin_normal_size"
-                        android:layout_width="match_parent"
-                        android:layout_height="220dp"
-                        android:layout_margin="@dimen/margin_normal_size"
-                        android:background="@android:color/transparent">
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-                            <androidx.viewpager.widget.ViewPager
-                                android:id="@+id/viewpager"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                />
-                            <me.relex.circleindicator.CircleIndicator
-                                android:id="@+id/indicator"
-                                android:layout_width="wrap_content"
-                                android:layout_height="40dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentRight="true"
-                                android:layout_alignParentBottom="true"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp"
-                                android:background="@android:color/transparent"
-                                android:gravity="center_vertical"
-                                android:layoutDirection="ltr"/>
+                    app:cardCornerRadius="@dimen/margin_large_size"
+                    android:layout_marginBottom="30dp"
+                    >
 
-                            <TextView
-                                android:paddingLeft="@dimen/margin_small_size"
-                                android:paddingRight="@dimen/margin_small_size"
-                                android:layout_width="88dp"
-                                android:layout_height="25dp"
-                                android:textStyle="bold"
-                                android:textColor="@android:color/white"
-                                android:text="50 مليار جنية"
-                                android:textSize="@dimen/txt_small_size"
-                                android:layout_margin="@dimen/margin_small_size"
-                                android:gravity="center"
-                                android:background="@drawable/shape_price_bg"
-                                android:layout_alignParentBottom="true"
-                                />
-
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
                     <LinearLayout
+                        android:elevation="@dimen/margin_normal_size"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
+                        <androidx.cardview.widget.CardView
+                            app:cardCornerRadius="@dimen/margin_normal_size"
+                            android:layout_width="match_parent"
+                            android:layout_height="220dp"
+                            android:layout_margin="@dimen/margin_normal_size"
+                            android:background="@android:color/transparent">
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <androidx.viewpager.widget.ViewPager
+                                    android:id="@+id/viewpager"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    />
+                                <me.relex.circleindicator.CircleIndicator
+                                    android:id="@+id/indicator"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="25dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_margin="10dp"
+                                    android:background="@android:color/transparent"
+                                    android:gravity="center_vertical"
+                                    android:layoutDirection="ltr"/>
 
+                                <TextView
+                                    android:paddingLeft="@dimen/margin_normal_size"
+                                    android:paddingRight="@dimen/margin_normal_size"
+                                    android:layout_width="88dp"
+                                    android:layout_height="25dp"
+                                    android:textStyle="bold"
+                                    android:textColor="@android:color/white"
+                                    android:text="50 مليار جنية"
+                                    android:textSize="@dimen/txt_small_size"
+                                    android:layout_margin="@dimen/margin_normal_size"
+                                    android:gravity="center"
+                                    android:background="@drawable/shape_price_bg"
+                                    android:layout_alignParentBottom="true"
+                                    />
+
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
+                        <LinearLayout
+                            android:layout_marginBottom="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="50dp">
+                                <androidx.constraintlayout.widget.Guideline
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    app:layout_constraintGuide_percent="0.5"
+                                    android:id="@+id/g1"/>
+                                <TextView
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    android:minHeight="50dp"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintLeft_toRightOf="@+id/g1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_normal_size"
+                                    android:layout_marginRight="@dimen/margin_normal_size"
+                                    android:textStyle="bold"
+                                    android:textSize="@dimen/txt_large_size"
+                                    android:textColor="@color/newAdsTitleColor"
+                                    android:text="شقة للايجار"
+                                    android:gravity="center_vertical"/>
+                                <LinearLayout
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    android:minHeight="50dp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    app:layout_constraintRight_toLeftOf="@+id/g1"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    android:orientation="horizontal"
+                                    android:layoutDirection="ltr">
+                                    <TextView
+                                        android:layout_marginRight="@dimen/margin_normal_size"
+                                        android:layout_marginLeft="@dimen/margin_normal_size"
+                                        android:paddingLeft="@dimen/margin_small_size"
+                                        android:paddingRight="@dimen/margin_small_size"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="30dp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/txtOrange"
+                                        android:text="4.5"
+                                        android:textSize="@dimen/txt_normal_size"
+                                        android:gravity="center_vertical"
+                                        android:drawableLeft="@drawable/ic_star_orange"
+                                        android:drawablePadding="@dimen/margin_small_size"
+                                        />
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:paddingLeft="@dimen/margin_small_size"
+                                        android:paddingRight="@dimen/margin_small_size"
+                                        android:layout_width="45dp"
+                                        android:layout_height="20dp"
+                                        android:textStyle="bold"
+                                        android:textColor="@android:color/white"
+                                        android:text="1.1K"
+                                        android:textSize="8sp"
+                                        android:layout_margin="@dimen/margin_small_size"
+                                        android:gravity="center"
+                                        android:background="@drawable/shape_views_bg"
+                                        android:drawableLeft="@drawable/ic_eye"
+                                        android:drawablePadding="@dimen/margin_small_size"
+                                        />
+
+                                </LinearLayout>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <TextView
+                                android:layout_marginBottom="40dp"
+                                android:layout_margin="@dimen/margin_normal_size"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="شقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارر"
+                                android:textSize="@dimen/txt_normal_size"
+                                android:ellipsize="end"
+                                />
+
+
+
+
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+            <LinearLayout
+                android:elevation="10dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/shape_back_circle_det_activity"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_phone_in_talk"/>
+            </LinearLayout>
+        </RelativeLayout>
+
 
 
     </androidx.core.widget.NestedScrollView>
