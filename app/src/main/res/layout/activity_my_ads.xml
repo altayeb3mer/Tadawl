@@ -6,7 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".Activity.MyAds"
     android:background="@drawable/shape_toolbar_bg"
-    android:layoutDirection="rtl">
+    android:layoutDirection="rtl"
+    android:focusableInTouchMode="true"
+    android:focusable="true">
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -50,41 +53,41 @@
 <!--                android:src="@drawable/ic_notifications" />-->
 
 
-            <LinearLayout
-                android:id="@+id/nav_drawer_lay"
-                android:layout_width="37dp"
-                android:layout_height="37dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/margin_small_size"
-                android:layout_marginRight="@dimen/margin_small_size"
-                android:gravity="center"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/nav_drawer_lay"-->
+<!--                android:layout_width="37dp"-->
+<!--                android:layout_height="37dp"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_marginLeft="@dimen/margin_small_size"-->
+<!--                android:layout_marginRight="@dimen/margin_small_size"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical">-->
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="@dimen/margin_small_size"
-                    android:layout_marginRight="@dimen/margin_small_size"
-                    android:background="@android:color/white" />
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="1dp"-->
+<!--                    android:layout_marginLeft="@dimen/margin_small_size"-->
+<!--                    android:layout_marginRight="@dimen/margin_small_size"-->
+<!--                    android:background="@android:color/white" />-->
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="@dimen/margin_small_size"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="@dimen/margin_small_size"
-                    android:background="@android:color/white" />
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="1dp"-->
+<!--                    android:layout_marginLeft="@dimen/margin_small_size"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_marginRight="@dimen/margin_small_size"-->
+<!--                    android:background="@android:color/white" />-->
 
-                <View
-                    android:layout_width="15dp"
-                    android:layout_height="1dp"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="@dimen/margin_small_size"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="@dimen/margin_small_size"
-                    android:background="@android:color/white" />
-            </LinearLayout>
+<!--                <View-->
+<!--                    android:layout_width="15dp"-->
+<!--                    android:layout_height="1dp"-->
+<!--                    android:layout_gravity="right"-->
+<!--                    android:layout_marginLeft="@dimen/margin_small_size"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_marginRight="@dimen/margin_small_size"-->
+<!--                    android:background="@android:color/white" />-->
+<!--            </LinearLayout>-->
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -100,31 +103,59 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginRight="@dimen/margin_normal_size"
+                android:layout_marginLeft="@dimen/margin_normal_size">
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="عقارات"
+                    android:textColor="@android:color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true">
+                    <ImageView
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_arrow_down"
+                        android:id="@+id/ic_arrow_down"/>
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:layout_toRightOf="@+id/ic_arrow_down"
+                        />
+                </RelativeLayout>
+            </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:maxLines="1"
-                android:padding="@dimen/margin_large_size"
-                android:text="إعلاناتي"
-                android:textColor="@android:color/white"
-                android:textSize="25sp"
-                android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingTop="100dp"
+            android:paddingTop="@dimen/margin_large_size"
             android:background="@drawable/shape_prof_liner_bg">
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_normal_size"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                android:orientation="vertical"
                 tools:listitem="@layout/new_adds_rec_item"
                 tools:itemCount="9"
                 app:spanCount="3"

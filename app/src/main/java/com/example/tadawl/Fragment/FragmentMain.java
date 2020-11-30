@@ -1,6 +1,7 @@
 package com.example.tadawl.Fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.tadawl.Activity.MyAds;
 import com.example.tadawl.Adapter.AdapterNewAds;
 import com.example.tadawl.Model.ModelNewAds;
 import com.google.android.material.tabs.TabLayout;
@@ -42,6 +45,7 @@ public class FragmentMain extends Fragment {
     RecyclerView recycler;
     AdapterNewAds adapterNewAds;
     ArrayList <ModelNewAds> arrayList;
+    TextView txtShowMore;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,9 +58,18 @@ public class FragmentMain extends Fragment {
     }
 
     private void init() {
+        txtShowMore = view.findViewById(R.id.txtShowMore);
         recycler = view.findViewById(R.id.recycler);
         tableLayout = view.findViewById(R.id.tabLayout);
         customViewPager = view.findViewById(R.id.viewpager);
+
+        txtShowMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), MyAds.class));
+            }
+        });
+
 
         initTabLayout();
         initAdapterNewAds();

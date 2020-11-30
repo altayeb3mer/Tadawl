@@ -6,87 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".Activity.MyAds"
     android:background="@drawable/shape_toolbar_bg"
-    android:layoutDirection="rtl">
+    android:layoutDirection="rtl"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/toolbar"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:background="@android:color/transparent"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="?actionBarSize"-->
-<!--        app:layout_collapseMode="pin">-->
-
-<!--        <RelativeLayout-->
-<!--            android:id="@+id/r2"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
-
-<!--            <LinearLayout-->
-<!--                android:id="@+id/laySearch"-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:layout_alignParentLeft="true"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:layout_marginLeft="@dimen/margin_small_size"-->
-<!--                android:layout_marginRight="@dimen/margin_small_size"-->
-<!--                android:background="@drawable/shape_back_circle"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="horizontal">-->
-
-<!--                <ImageView-->
-<!--                    android:layout_width="20dp"-->
-<!--                    android:layout_height="20dp"-->
-<!--                    android:src="@drawable/ic_arrow_back" />-->
-<!--            </LinearLayout>-->
-
-<!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_width="37dp"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_height="37dp"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_centerVertical="true"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_marginLeft="@dimen/margin_small_size"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_marginRight="@dimen/margin_small_size"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_toRightOf="@+id/laySearch"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:scaleType="center"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:src="@drawable/ic_notifications" />&ndash;&gt;-->
-
-
-<!--            <LinearLayout-->
-<!--                android:id="@+id/nav_drawer_lay"-->
-<!--                android:layout_width="37dp"-->
-<!--                android:layout_height="37dp"-->
-<!--                android:layout_alignParentRight="true"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:layout_marginLeft="@dimen/margin_small_size"-->
-<!--                android:layout_marginRight="@dimen/margin_small_size"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="vertical">-->
-
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:layout_marginLeft="@dimen/margin_small_size"-->
-<!--                    android:layout_marginRight="@dimen/margin_small_size"-->
-<!--                    android:background="@android:color/white" />-->
-
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:layout_marginLeft="@dimen/margin_small_size"-->
-<!--                    android:layout_marginTop="5dp"-->
-<!--                    android:layout_marginRight="@dimen/margin_small_size"-->
-<!--                    android:background="@android:color/white" />-->
-
-<!--                <View-->
-<!--                    android:layout_width="15dp"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:layout_gravity="right"-->
-<!--                    android:layout_marginLeft="@dimen/margin_small_size"-->
-<!--                    android:layout_marginTop="5dp"-->
-<!--                    android:layout_marginRight="@dimen/margin_small_size"-->
-<!--                    android:background="@android:color/white" />-->
-<!--            </LinearLayout>-->
-<!--        </RelativeLayout>-->
-<!--    </androidx.appcompat.widget.Toolbar>-->
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -101,6 +24,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -113,6 +37,8 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -124,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_normal_size"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     android:orientation="vertical"
                     tools:listitem="@layout/new_adds_rec_item"
                     tools:itemCount="9"
