@@ -55,6 +55,7 @@
             android:layout_marginTop="@dimen/margin_normal_size">
             <com.google.android.material.textfield.TextInputEditText
                 android:background="@android:color/transparent"
+                android:id="@+id/phone"
                 android:layout_marginLeft="@dimen/margin_small_size"
                 android:layout_marginRight="@dimen/margin_small_size"
                 android:layout_width="match_parent"
@@ -72,6 +73,7 @@
             app:passwordToggleEnabled="true"
             android:padding="@dimen/margin_small_size">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
                     android:background="@android:color/transparent"
                     android:layout_marginLeft="@dimen/margin_small_size"
                     android:layout_marginRight="@dimen/margin_small_size"
@@ -87,6 +89,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn"
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:text="دخـــــول"
@@ -108,6 +111,7 @@
                 android:layout_height="wrap_content"
                 android:text="لاتملك حساب؟"/>
             <TextView
+                android:id="@+id/txtRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="تسجيل دخول"
@@ -118,6 +122,25 @@
                 android:layout_marginLeft="@dimen/margin_small_size"/>
 
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/progressLay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black30"
+        android:gravity="center"
+        android:visibility="gone"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            style="@style/AVLoadingIndicatorView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:visibility="visible"
+            app:indicatorColor="@color/colorPrimary"
+            app:indicatorName="LineSpinFadeLoaderIndicator" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

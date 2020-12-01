@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tadawl">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.MyAds"></activity>
+        <activity android:name=".Activity.MyAds"/>
         <activity android:name=".Activity.PostDetails" />
         <activity android:name=".Activity.AddSuccess" />
         <activity android:name=".Activity.AddNewPost" />
         <activity android:name=".Activity.Register" />
         <activity android:name=".Activity.Login" />
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.MainActivity"/>
+
+        <activity
+            android:name=".Activity.SplashActivity"
+            android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

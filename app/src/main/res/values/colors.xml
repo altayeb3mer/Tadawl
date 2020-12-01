@@ -8,6 +8,7 @@
     <color name="colorBackground">#FAFAFA</color>
     <color name="defaultColor">#808080</color>
 
+    <color name="black30">#80000000</color>
     <color name="priceBg">#FF2323</color>
     <color name="views_color">#727093</color>
     <color name="newAdsTitleColor">#19164F</color>
