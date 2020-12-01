@@ -59,8 +59,6 @@ public class Login extends AppCompatActivity  implements View.OnClickListener {
         button.setOnClickListener(this);
     }
 
-
-
     private boolean isValidMobile(String phone) {
         if (phone.length()==10){
             return android.util.Patterns.PHONE.matcher(phone).matches();
