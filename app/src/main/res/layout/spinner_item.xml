@@ -4,4 +4,4 @@
     android:layout_height="40dp"
     android:gravity="center_vertical"
     android:textSize="@dimen/txt_normal_size"
-    android:textColor="@android:color/white"/>
+    android:textColor="@color/colorPrimary"/>
