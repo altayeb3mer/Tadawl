@@ -78,8 +78,6 @@ public class FragmentAddEstate extends Fragment {
     CardView cardViewImg1,cardViewImg2,cardViewImg3,cardViewImg4,cardViewImg5;
     ImageView imageView1,imageView2,imageView3,imageView4,imageView5;
 
-
-
     private void init(){
         imageView1 = view.findViewById(R.id.img1);
         imageView2 = view.findViewById(R.id.img2);
@@ -145,7 +143,6 @@ public class FragmentAddEstate extends Fragment {
         initSpinnerType();
         getCategory();
         getState();
-
 
     }
 
@@ -554,7 +551,6 @@ public class FragmentAddEstate extends Fragment {
     }
 
     String imgNo="";
-
 
     HashMap<String,String> hashMapParam;
 
