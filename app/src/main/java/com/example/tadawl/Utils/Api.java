@@ -43,8 +43,13 @@ public class Api {
     }
     //add estate
     public interface RetrofitAddEstate {
-        @POST("api/add-realestate")
+        @GET("api/add-realestate")
         Call<String> putParam(@Body HashMap<String, String> params);
+    }
+    //car companies
+    public interface RetrofitCarCompanies {
+        @POST("api/companies")
+        Call<String> putParam();
     }
 
 

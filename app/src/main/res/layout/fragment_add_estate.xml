@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="@dimen/margin_large_size"
-                    android:text="عنوان العقار"
+                    android:text="عنوان الاعلان"
                     android:textColor="@color/newAdsTitleColor"
                     android:textSize="@dimen/txt_normal_size"
                     android:textStyle="bold" />
@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="@dimen/margin_large_size"
-                    android:text="نوع العقار"
+                    android:text="نوع الاعلان"
                     android:textColor="@color/newAdsTitleColor"
                     android:textSize="@dimen/txt_normal_size"
                     android:textStyle="bold" />
