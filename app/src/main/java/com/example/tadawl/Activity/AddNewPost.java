@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.tadawl.Adapter.ViewPagerAdapter;
 import com.example.tadawl.Fragment.FragmentAddCar;
@@ -21,6 +22,7 @@ public class AddNewPost extends AppCompatActivity {
 
     TabLayout tableLayout;
     CustomViewPager customViewPager;
+    LinearLayout layBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,13 @@ public class AddNewPost extends AppCompatActivity {
 
 
     private void init() {
+        layBack = findViewById(R.id.layBack);
+        layBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         tableLayout = findViewById(R.id.tabLayout);
         customViewPager = findViewById(R.id.viewpager);
 
