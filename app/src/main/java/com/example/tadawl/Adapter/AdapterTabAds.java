@@ -51,8 +51,15 @@ public class AdapterTabAds extends RecyclerView.Adapter<AdapterTabAds.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         ModelAds item = arrayList.get(position);
-        Glide.with(activity).load(Api.ROOT_URL+item.getImage())
-                .into(holder.imageView);
+
+        try {
+            Glide.with(activity).load(Api.ROOT_URL+item.getImage())
+                    .into(holder.imageView);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -21,15 +21,17 @@
                 android:layout_height="match_parent"
                 app:cardCornerRadius="@dimen/margin_large_size"
                 android:layout_margin="1dp">
+
                 <ImageView
+                    android:id="@+id/img"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/hose1"/>
+                    android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
         <TextView
+            android:id="@+id/title"
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="25dp"
@@ -47,6 +49,7 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/price"
         android:layout_marginTop="@dimen/margin_normal_size"
         android:textStyle="bold"
         android:layout_width="match_parent"

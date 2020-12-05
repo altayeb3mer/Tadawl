@@ -54,7 +54,7 @@ public class FragmentTabLay extends Fragment {
 
     View view;
     LinearLayout progressLay;
-    RelativeLayout container;
+    RelativeLayout container2;
     LinearLayoutManager linearLayoutManager;
 
     @Override
@@ -67,7 +67,7 @@ public class FragmentTabLay extends Fragment {
     }
 
     private void init() {
-        container = view.findViewById(R.id.container);
+        container2 = view.findViewById(R.id.container);
         progressLay = view.findViewById(R.id.progressLay);
         switch (fragId){
             case "2":{
@@ -253,7 +253,7 @@ public class FragmentTabLay extends Fragment {
 
     //snackBar msg
     private void showSnackBar(String msg) {
-        Snackbar snackbar = Snackbar.make(container, msg, Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(container2, msg, Snackbar.LENGTH_LONG);
         View snackview = snackbar.getView();
         snackview.setBackgroundColor(Color.RED);
         TextView masseage;
@@ -264,7 +264,7 @@ public class FragmentTabLay extends Fragment {
     }
 
     public void showSnackBarBtn(String msg) {
-        final Snackbar snackbar = Snackbar.make(container, msg, Snackbar.LENGTH_INDEFINITE);
+        final Snackbar snackbar = Snackbar.make(container2, msg, Snackbar.LENGTH_INDEFINITE);
         View snackview = snackbar.getView();
         snackview.setBackgroundColor(Color.RED);
         TextView masseage;

@@ -8,13 +8,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.tadawl.Activity.PostDetails;
 import com.example.tadawl.Model.ModelAds;
 import com.example.tadawl.Model.ModelNewAds;
 import com.example.tadawl.R;
+import com.example.tadawl.Utils.Api;
 
 import java.util.ArrayList;
 
@@ -47,14 +50,25 @@ public class AdapterNewAds extends RecyclerView.Adapter<AdapterNewAds.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         ModelNewAds item = arrayList.get(position);
-//        Glide.with(activity).load(URL.ROOT_IMG+item.getImgUrl())
-//                .into(holder.imageView);
+        try {
+            Glide.with(activity).load(Api.ROOT_URL+item.getImage())
+                    .into(holder.imageView);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 activity.startActivity(new Intent(activity, PostDetails.class));
             }
         });
+        holder.textViewTitle.setText(item.getTitle());
+        holder.textViewPrice.setText(item.getPrice()+" "+"جنيه سوداني");
+
+
+
+
     }
 
     @Override
@@ -77,12 +91,14 @@ public class AdapterNewAds extends RecyclerView.Adapter<AdapterNewAds.ViewHolder
 
         ImageView imageView;
         LinearLayout container;
-
+        TextView textViewTitle, textViewPrice;
 
         ViewHolder(View itemView) {
             super(itemView);
-//            imageView = itemView.findViewById(R.id.img);
+            imageView = itemView.findViewById(R.id.img);
             container = itemView.findViewById(R.id.container);
+            textViewTitle = itemView.findViewById(R.id.title);
+            textViewPrice = itemView.findViewById(R.id.price);
 
         }
 

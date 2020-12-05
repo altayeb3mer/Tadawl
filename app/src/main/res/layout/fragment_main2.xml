@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layoutDirection="rtl">
+    android:layoutDirection="rtl"
+    android:id="@+id/container"
+    >
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -91,7 +93,7 @@
                     android:layout_marginTop="@dimen/margin_small_size"
                     android:layout_marginRight="@dimen/margin_large_size"
                     android:layout_marginLeft="@dimen/margin_normal_size"
-                    android:text="إعلانات جديدة"
+                    android:text="سيارات"
                     android:textSize="20sp"
                     android:textColor="@color/newAdsTitleColor"
                     android:textStyle="bold"/>
@@ -107,6 +109,9 @@
                     android:textStyle="bold"
                     android:layout_alignParentLeft="true"/>
             </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <androidx.recyclerview.widget.RecyclerView
                 android:visibility="visible"
                 android:layout_width="match_parent"
@@ -117,8 +122,109 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
                 tools:listitem="@layout/new_adds_rec_item"/>
+                <LinearLayout
+                    android:id="@+id/progressLay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+
+                    <com.wang.avi.AVLoadingIndicatorView
+                        android:id="@+id/avi"
+                        style="@style/AVLoadingIndicatorView"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:visibility="visible"
+                        app:indicatorColor="@color/colorPrimary"
+                        app:indicatorName="LineSpinFadeLoaderIndicator" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            //estate
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small_size"
+                    android:layout_marginRight="@dimen/margin_large_size"
+                    android:layout_marginLeft="@dimen/margin_normal_size"
+                    android:text="عقارات"
+                    android:textSize="20sp"
+                    android:textColor="@color/newAdsTitleColor"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/txtShowMore2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small_size"
+                    android:layout_marginRight="@dimen/margin_large_size"
+                    android:layout_marginLeft="@dimen/margin_normal_size"
+                    android:text="عرض الكل"
+                    android:textSize="@dimen/txt_normal_size"
+                    android:textStyle="bold"
+                    android:layout_alignParentLeft="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginBottom="@dimen/margin_normal_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/recycler2"
+                    app:spanCount="1"
+                    tools:itemCount="10"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="horizontal"
+                    tools:listitem="@layout/new_adds_rec_item"/>
+                <LinearLayout
+                    android:id="@+id/progressLay2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+
+                    <com.wang.avi.AVLoadingIndicatorView
+                        style="@style/AVLoadingIndicatorView"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:visibility="visible"
+                        app:indicatorColor="@color/colorPrimary"
+                        app:indicatorName="LineSpinFadeLoaderIndicator" />
+                </LinearLayout>
+
+            </RelativeLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-
+<LinearLayout
+    android:visibility="gone"
+    android:id="@+id/progressLayDark"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/newAdsTitleColor"
+    android:orientation="vertical">
+    <com.wang.avi.AVLoadingIndicatorView
+        style="@style/AVLoadingIndicatorView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="visible"
+        app:indicatorColor="@android:color/white"
+        app:indicatorName="LineSpinFadeLoaderIndicator" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:text="جاري التحميل.."
+        android:textSize="@dimen/txt_normal_size"/>
+</LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
