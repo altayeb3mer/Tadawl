@@ -8,14 +8,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
 import com.example.tadawl.Activity.PostDetails;
 import com.example.tadawl.Model.ModelAds;
 import com.example.tadawl.R;
+import com.example.tadawl.Utils.Api;
 
 
 import java.util.ArrayList;
@@ -34,7 +37,6 @@ public class AdapterTabAds extends RecyclerView.Adapter<AdapterTabAds.ViewHolder
         this.mInflater = LayoutInflater.from(activity);
         this.arrayList = r;
         this.activity = activity;
-
     }
 
 
@@ -49,14 +51,21 @@ public class AdapterTabAds extends RecyclerView.Adapter<AdapterTabAds.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         ModelAds item = arrayList.get(position);
-//        Glide.with(activity).load(URL.ROOT_IMG+item.getImgUrl())
-//                .into(holder.imageView);
+        Glide.with(activity).load(Api.ROOT_URL+item.getImage())
+                .into(holder.imageView);
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 activity.startActivity(new Intent(activity, PostDetails.class));
             }
         });
+        holder.textViewTitle.setText(item.getTitle());
+        holder.textViewDescription.setText(item.getDescription());
+        holder.textViewPrice.setText(item.getPrice()+" "+"جنيه سوداني");
+        holder.textViewViews.setText(item.getViews());
+        holder.textViewRating.setText(item.getRating());
+
+
     }
 
     @Override
@@ -80,12 +89,21 @@ public class AdapterTabAds extends RecyclerView.Adapter<AdapterTabAds.ViewHolder
         ImageView imageView;
 
         CardView container;
+        TextView textViewTitle, textViewDescription,textViewPrice,
+                textViewViews,textViewRating;
 
         ViewHolder(View itemView) {
             super(itemView);
-//            imageView = itemView.findViewById(R.id.img);
-
             container = itemView.findViewById(R.id.container);
+
+            imageView = itemView.findViewById(R.id.img);
+            textViewTitle = itemView.findViewById(R.id.title);
+            textViewDescription = itemView.findViewById(R.id.description);
+            textViewPrice = itemView.findViewById(R.id.price);
+            textViewViews = itemView.findViewById(R.id.views);
+            textViewRating = itemView.findViewById(R.id.rating);
+
+
         }
 
         @Override

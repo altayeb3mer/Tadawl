@@ -43,12 +43,27 @@ public class Api {
     }
     //add estate
     public interface RetrofitAddEstate {
-        @GET("api/add-realestate")
+        @POST("api/add-realestate")
+        Call<String> putParam(@Body HashMap<String, String> params);
+    }
+    //add car
+    public interface RetrofitAddCar {
+        @POST("api/add-car")
         Call<String> putParam(@Body HashMap<String, String> params);
     }
     //car companies
     public interface RetrofitCarCompanies {
-        @POST("api/companies")
+        @GET("api/companies")
+        Call<String> putParam();
+    }
+    //get popular
+    public interface RetrofitGetPopular {
+        @GET("api/ads")
+        Call<String> putParam(@QueryMap HashMap<String, String> params);
+    }
+    //get all
+    public interface RetrofitGetAll{
+        @GET("api/ads")
         Call<String> putParam();
     }
 

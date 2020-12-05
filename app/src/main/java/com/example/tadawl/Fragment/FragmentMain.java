@@ -96,7 +96,7 @@ public class FragmentMain extends Fragment {
         FragmentTabLay fragmentTabLay2 = new FragmentTabLay("2");
         FragmentTabLay fragmentTabLay3 = new FragmentTabLay("3");
 
-        adapter.addFragment(fragmentTabLay1,"لك");
+//        adapter.addFragment(fragmentTabLay1,"لك");
         adapter.addFragment(fragmentTabLay2,"اعلانات متداولة");
         adapter.addFragment(fragmentTabLay3,"كل الاعلانات");
         customViewPager.setAdapter(adapter);

@@ -54,6 +54,7 @@
             android:background="@drawable/shape_edt_bg"
             android:layout_marginTop="@dimen/margin_normal_size">
             <com.google.android.material.textfield.TextInputEditText
+                android:inputType="phone"
                 android:background="@android:color/transparent"
                 android:id="@+id/phone"
                 android:layout_marginLeft="@dimen/margin_small_size"

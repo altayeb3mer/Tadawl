@@ -284,6 +284,7 @@
                             android:inputType="text"/>
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -293,8 +294,6 @@
                     android:textColor="@color/newAdsTitleColor"
                     android:textSize="@dimen/txt_normal_size"
                     android:textStyle="bold" />
-
-
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -317,7 +316,7 @@
                             android:src="@drawable/ic_arrow_down" />
 
                         <Spinner
-                            android:id="@+id/spinnerState"
+                            android:id="@+id/spinnerTransmission"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_toRightOf="@+id/ic_arr3"
@@ -357,10 +356,90 @@
                             android:src="@drawable/ic_arrow_down" />
 
                         <Spinner
-                            android:id="@+id/spinnerCity"
+                            android:id="@+id/spinnerIsNew"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_toRightOf="@+id/ic_arr4"
+                            android:background="@android:color/transparent"
+                            android:paddingLeft="@dimen/margin_small_size"
+                            android:paddingRight="@dimen/margin_small_size" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/margin_large_size"
+                    android:text="الولاية"
+                    android:textColor="@color/newAdsTitleColor"
+                    android:textSize="@dimen/txt_normal_size"
+                    android:textStyle="bold" />
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    app:cardCornerRadius="20dp"
+                    android:layout_marginLeft="@dimen/margin_large_size"
+                    android:layout_marginRight="@dimen/margin_large_size"
+                    android:layout_marginBottom="2dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <ImageView
+                            android:id="@+id/ic_arr31"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/margin_small_size"
+                            android:layout_marginRight="@dimen/margin_small_size"
+                            android:src="@drawable/ic_arrow_down" />
+
+                        <Spinner
+                            android:id="@+id/spinnerState"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_toRightOf="@+id/ic_arr31"
+                            android:background="@android:color/transparent"
+                            android:paddingLeft="@dimen/margin_small_size"
+                            android:paddingRight="@dimen/margin_small_size" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/margin_large_size"
+                    android:text="المدينة"
+                    android:textColor="@color/newAdsTitleColor"
+                    android:textSize="@dimen/txt_normal_size"
+                    android:textStyle="bold" />
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    app:cardCornerRadius="20dp"
+                    android:layout_marginLeft="@dimen/margin_large_size"
+                    android:layout_marginRight="@dimen/margin_large_size"
+                    android:layout_marginBottom="2dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <ImageView
+                            android:id="@+id/ic_arr41"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/margin_small_size"
+                            android:layout_marginRight="@dimen/margin_small_size"
+                            android:src="@drawable/ic_arrow_down" />
+
+                        <Spinner
+                            android:id="@+id/spinnerCity"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_toRightOf="@+id/ic_arr41"
                             android:background="@android:color/transparent"
                             android:paddingLeft="@dimen/margin_small_size"
                             android:paddingRight="@dimen/margin_small_size" />
@@ -372,7 +451,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="@dimen/margin_large_size"
-                    android:text="عمر السيارة (سنه)"
+                    android:text="سنة الصنع"
                     android:textColor="@color/newAdsTitleColor"
                     android:textSize="@dimen/txt_normal_size"
                     android:textStyle="bold" />

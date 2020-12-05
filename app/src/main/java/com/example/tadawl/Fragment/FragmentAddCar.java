@@ -71,9 +71,9 @@ public class FragmentAddCar extends Fragment {
     CardView cardViewImg1, cardViewImg2, cardViewImg3, cardViewImg4, cardViewImg5;
     ImageView imageView1, imageView2, imageView3, imageView4, imageView5;
     EditText editTextTitle, editTextPrice, editTextNoRoom, editTextArea, editTextNeighborhood, editTextDescription;
-    String s_title = "", s_price = "", s_no_room = "", s_area = "", s_neighborhood = "", s_description = "";
+    String s_title = "", s_price = "", s_color = "", s_model = "", s_car_year = "", s_description = "";
     ConstraintLayout container;
-    Spinner spinnerType, spinnerCategory, spinnerState, spinnerCity;
+    Spinner spinnerType, spinnerCategory, spinnerState, spinnerCity,SpinnerIsNew, SpinnerTransmission;
     ArrayList<String> arrayCatName;
     String[] arrayType;
     String s_type = "", s_category = "";
@@ -161,6 +161,9 @@ public class FragmentAddCar extends Fragment {
 
         spinnerState = view.findViewById(R.id.spinnerState);
         spinnerCity = view.findViewById(R.id.spinnerCity);
+        SpinnerIsNew = view.findViewById(R.id.spinnerIsNew);
+        SpinnerTransmission = view.findViewById(R.id.spinnerTransmission);
+
         progressLay = view.findViewById(R.id.progressLay);
         btn = view.findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -178,20 +181,21 @@ public class FragmentAddCar extends Fragment {
         getCompanies();
         initTransmission();
         initSpinnerIsNew();
-//        getState();
+        getState();
 
     }
     private void preAdd() {
         s_title = editTextTitle.getText().toString().trim();
         s_price = editTextPrice.getText().toString().trim();
-        s_no_room = editTextNoRoom.getText().toString().trim();
-        s_area = editTextArea.getText().toString().trim();
-        s_neighborhood = editTextNeighborhood.getText().toString().trim();
+        s_color = editTextNoRoom.getText().toString().trim();
+        s_model = editTextArea.getText().toString().trim();
+        s_car_year = editTextNeighborhood.getText().toString().trim();
         s_description = editTextDescription.getText().toString().trim();
 
         if (!s_title.equals("") && !s_type.equals("") && !s_category.equals("")
-                && !s_price.equals("") && !s_no_room.equals("")
-                && !s_state_id.equals("") && !s_city_id.equals("") && !s_neighborhood.equals("")
+                && !s_price.equals("") && !s_color.equals("")
+                && !is_new.equals("") && !s_transmission.equals("") && !s_car_year.equals("")
+                && !s_model.equals("") && !s_city_id.equals("")
                 && hasImage) {
             sendPost();
         } else {
@@ -226,17 +230,19 @@ public class FragmentAddCar extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        Api.RetrofitAddEstate service = retrofit.create(Api.RetrofitAddEstate.class);
+        Api.RetrofitAddCar service = retrofit.create(Api.RetrofitAddCar.class);
 
-        hashMapParam.put("city_id", s_city_id);
+        hashMapParam.put("transmission", s_transmission);
+        hashMapParam.put("is_new", is_new);
         hashMapParam.put("title", s_title);
         hashMapParam.put("ad_type", s_type);
         hashMapParam.put("price", s_price);
         hashMapParam.put("description", s_description);
-        hashMapParam.put("category_id", s_category);
-        hashMapParam.put("number_of_rooms", s_no_room);
-        hashMapParam.put("neighborhood", s_neighborhood);
-        hashMapParam.put("area", s_area);
+        hashMapParam.put("company_id", s_category);
+        hashMapParam.put("color", s_color);
+        hashMapParam.put("year", s_car_year);
+        hashMapParam.put("model", s_model);
+        hashMapParam.put("city_id", s_city_id);
 
         Call<String> call = service.putParam(hashMapParam);
         call.enqueue(new Callback<String>() {
@@ -271,7 +277,7 @@ public class FragmentAddCar extends Fragment {
 
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
-                Toast.makeText(getActivity(), "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "خطأ في اضافة الاعلان حاول مجددا", Toast.LENGTH_SHORT).show();
                 progressLay.setVisibility(View.GONE);
             }
         });
@@ -379,7 +385,7 @@ public class FragmentAddCar extends Fragment {
                 } catch (Exception e) {
                     e.printStackTrace();
 //                    Toast.makeText(getActivity(), "خطأ في التحويل", Toast.LENGTH_SHORT).show();
-                    showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+                    showSnakBar("حدث خطأ الرجاء المحاولة مر اخرى");
                 }
                 progressLay.setVisibility(View.GONE);
             }
@@ -387,7 +393,7 @@ public class FragmentAddCar extends Fragment {
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
 //                Toast.makeText(getActivity(), "حدث خطأ الرجاء المحاولة مر اخرى", Toast.LENGTH_SHORT).show();
-                showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+                showSnakBar("حدث خطأ الرجاء المحاولة مر اخرى");
                 progressLay.setVisibility(View.GONE);
             }
         });
@@ -480,8 +486,8 @@ public class FragmentAddCar extends Fragment {
             }
         };
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerState.setAdapter(adapter1);
-        spinnerState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        SpinnerTransmission.setAdapter(adapter1);
+        SpinnerTransmission.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
@@ -519,8 +525,8 @@ public class FragmentAddCar extends Fragment {
             }
         };
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCity.setAdapter(adapter1);
-        spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        SpinnerIsNew.setAdapter(adapter1);
+        SpinnerIsNew.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
@@ -531,6 +537,76 @@ public class FragmentAddCar extends Fragment {
                     }else {
                         is_new = "0";
                     }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+
+    private void initSpinnerState(final ArrayList<ModelState> arrayList) {
+        ArrayList<String> stateName = new ArrayList<>();
+        stateName.add("اختر الولاية");
+        for (int i = 0; i < arrayList.size(); i++) {
+            stateName.add(arrayList.get(i).getName());
+        }
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, stateName) {
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View v = null;
+                v = super.getDropDownView(position, null, parent);
+                // If this is the selected item position
+
+                return v;
+            }
+        };
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerState.setAdapter(adapter1);
+        spinnerState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    s_state_id = "";
+                } else {
+                    s_state_id = arrayList.get(position - 1).getId();
+                    getCity(s_state_id);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+    private void initSpinnerCity(final ArrayList<ModelCity> arrayList) {
+        ArrayList<String> cityName = new ArrayList<>();
+        cityName.add("اختر المدينة");
+        for (int i = 0; i < arrayList.size(); i++) {
+            cityName.add(arrayList.get(i).getName());
+        }
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, cityName) {
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View v = null;
+                v = super.getDropDownView(position, null, parent);
+                // If this is the selected item position
+
+                return v;
+            }
+        };
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCity.setAdapter(adapter1);
+        spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    s_city_id = "";
+                } else {
+                    s_city_id = arrayList.get(position - 1).getId();
                 }
             }
 
@@ -591,7 +667,7 @@ public class FragmentAddCar extends Fragment {
                                 arrayListState.add(modelState);
                             }
                             if (arrayListState.size() > 0) {
-//                                initSpinnerState(arrayListState);
+                                initSpinnerState(arrayListState);
                             } else {
                                 Toast.makeText(getActivity(), "الرجاء المحاوله لاحقا", Toast.LENGTH_SHORT).show();
                             }
@@ -675,7 +751,7 @@ public class FragmentAddCar extends Fragment {
                                 arrayListCity.add(modelCity);
                             }
                             if (arrayListCity.size() > 0) {
-//                                initSpinnerCity(arrayListCity);
+                                initSpinnerCity(arrayListCity);
                             } else {
                                 Toast.makeText(getActivity(), "الرجاء المحاوله لاحقا", Toast.LENGTH_SHORT).show();
                             }
@@ -705,6 +781,9 @@ public class FragmentAddCar extends Fragment {
             }
         });
     }
+
+
+
 
     //image picker
     private void pickImage() {
