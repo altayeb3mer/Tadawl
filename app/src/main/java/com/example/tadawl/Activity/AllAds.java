@@ -179,10 +179,10 @@ public class AllAds extends AppCompatActivity {
                     String statusCode = object.getString("status_code");
                     JSONObject jsonObject = object.getJSONObject("data");
                     //meta
-                    JSONObject metaObject = jsonObject.getJSONObject("meta");
-                    currentPage = metaObject.getString("current_page");
-                    lastPage = metaObject.getString("last_page");
-                    perPage = metaObject.getString("per_page");
+//                    JSONObject metaObject = jsonObject.getJSONObject("meta");
+                    currentPage = jsonObject.getString("current_page");
+                    lastPage = jsonObject.getString("last_page");
+                    perPage = jsonObject.getString("per_page");
 
                     switch (statusCode) {
                         case "200": {
@@ -235,7 +235,6 @@ public class AllAds extends AppCompatActivity {
         });
     }
 
-
     private void initSpinner(){
 
         //month array
@@ -267,7 +266,7 @@ public class AllAds extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 if (position == 0) {
-                    type = "";
+                    type = "all";
                 } else if (position==1){
                     type = "cars";
                 }else {
@@ -285,10 +284,8 @@ public class AllAds extends AppCompatActivity {
         });
     }
 
-
-
-
     ConstraintLayout container;
+
     public void showSnackBarBtn(String msg) {
         final Snackbar snackbar = Snackbar.make(container, msg, Snackbar.LENGTH_INDEFINITE);
         View snackview = snackbar.getView();
