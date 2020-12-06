@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,9 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tadawl.Activity.MyAds;
+import com.example.tadawl.Activity.AllAds;
 import com.example.tadawl.Adapter.AdapterNewAds;
-import com.example.tadawl.Model.ModelAds;
 import com.example.tadawl.Model.ModelNewAds;
 import com.example.tadawl.Utils.Api;
 import com.google.android.material.snackbar.Snackbar;
@@ -66,7 +64,7 @@ public class FragmentMain extends Fragment {
     RecyclerView recycler,recycler2;
     AdapterNewAds adapterNewAds,adapterNewAds2;
     ArrayList <ModelNewAds> arrayList,arrayList2;
-    TextView txtShowMore;
+    TextView txtShowMore,txtShowMore2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -84,6 +82,7 @@ public class FragmentMain extends Fragment {
         progressLay = view.findViewById(R.id.progressLay);
         progressLay2 = view.findViewById(R.id.progressLay2);
         txtShowMore = view.findViewById(R.id.txtShowMore);
+        txtShowMore2 = view.findViewById(R.id.txtShowMore2);
         recycler = view.findViewById(R.id.recycler);
         recycler2 = view.findViewById(R.id.recycler2);
         tableLayout = view.findViewById(R.id.tabLayout);
@@ -92,7 +91,17 @@ public class FragmentMain extends Fragment {
         txtShowMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), MyAds.class));
+                Intent intent = new Intent(getActivity(), AllAds.class);
+                intent.putExtra("type","cars");
+                startActivity(intent);
+            }
+        });
+        txtShowMore2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AllAds.class);
+                intent.putExtra("type","realestates");
+                startActivity(intent);
             }
         });
 

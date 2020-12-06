@@ -210,20 +210,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@color/newAdsTitleColor"
+    android:background="@android:color/white"
     android:orientation="vertical">
     <com.wang.avi.AVLoadingIndicatorView
         style="@style/AVLoadingIndicatorView"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:visibility="visible"
-        app:indicatorColor="@android:color/white"
+        app:indicatorColor="@color/newAdsTitleColor"
         app:indicatorName="LineSpinFadeLoaderIndicator" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@color/newAdsTitleColor"
         android:text="جاري التحميل.."
         android:textSize="@dimen/txt_normal_size"/>
 </LinearLayout>

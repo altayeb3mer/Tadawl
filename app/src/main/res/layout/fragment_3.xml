@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.MyAds"
+    tools:context=".Activity.AllAds"
     android:background="@drawable/shape_toolbar_bg"
     android:layoutDirection="rtl"
     android:focusable="true"
