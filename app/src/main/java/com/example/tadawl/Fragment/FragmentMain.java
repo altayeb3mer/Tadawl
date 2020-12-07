@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -65,6 +66,9 @@ public class FragmentMain extends Fragment {
     AdapterNewAds adapterNewAds,adapterNewAds2;
     ArrayList <ModelNewAds> arrayList,arrayList2;
     TextView txtShowMore,txtShowMore2;
+    AppCompatButton buttonTry;
+
+    LinearLayout progressLay,progressLay2,progressLayDark,errorLay;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -77,6 +81,14 @@ public class FragmentMain extends Fragment {
     }
 
     private void init() {
+        buttonTry = view.findViewById(R.id.reTry);
+        buttonTry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getData();
+            }
+        });
+        errorLay = view.findViewById(R.id.errorLay);
         container = view.findViewById(R.id.container);
         progressLayDark = view.findViewById(R.id.progressLayDark);
         progressLay = view.findViewById(R.id.progressLay);
@@ -105,12 +117,14 @@ public class FragmentMain extends Fragment {
             }
         });
 
+        getData();
+    }
 
+
+    private void getData(){
         initTabLayout();
         getCars();
         getEstate();
-//        initAdapterNewAds();
-
     }
 
     private void initAdapterCars(ArrayList<ModelNewAds> array) {
@@ -140,8 +154,8 @@ public class FragmentMain extends Fragment {
 
     }
 
-    LinearLayout progressLay,progressLay2,progressLayDark;
     private void getCars() {
+        errorLay.setVisibility(View.GONE);
         arrayList = new ArrayList<>();
         progressLay.setVisibility(View.VISIBLE);
         progressLayDark.setVisibility(View.VISIBLE);
@@ -211,26 +225,31 @@ public class FragmentMain extends Fragment {
 
                     progressLay.setVisibility(View.GONE);
                     progressLayDark.setVisibility(View.GONE);
+                    errorLay.setVisibility(View.GONE);
                 } catch (Exception e) {
                     e.printStackTrace();
 //                    Toast.makeText(getActivity(), "خطأ في التحويل", Toast.LENGTH_SHORT).show();
-                    showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+//                    showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+                    errorLay.setVisibility(View.VISIBLE);
                 }
                 progressLay.setVisibility(View.GONE);
                 progressLayDark.setVisibility(View.GONE);
+                errorLay.setVisibility(View.GONE);
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
 //                Toast.makeText(getActivity(), "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
-                showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+//                showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
                 progressLay.setVisibility(View.GONE);
                 progressLayDark.setVisibility(View.GONE);
+                errorLay.setVisibility(View.VISIBLE);
             }
         });
     }
 
     private void getEstate() {
+        errorLay.setVisibility(View.GONE);
         arrayList2 = new ArrayList<>();
         progressLay2.setVisibility(View.VISIBLE);
         progressLayDark.setVisibility(View.VISIBLE);
@@ -300,10 +319,12 @@ public class FragmentMain extends Fragment {
 
                     progressLay2.setVisibility(View.GONE);
                     progressLayDark.setVisibility(View.GONE);
+                    errorLay.setVisibility(View.GONE);
                 } catch (Exception e) {
                     e.printStackTrace();
 //                    Toast.makeText(getActivity(), "خطأ في التحويل", Toast.LENGTH_SHORT).show();
-                    showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+//                    showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+                    errorLay.setVisibility(View.VISIBLE);
                 }
                 progressLay2.setVisibility(View.GONE);
                 progressLayDark.setVisibility(View.GONE);
@@ -312,12 +333,14 @@ public class FragmentMain extends Fragment {
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
 //                Toast.makeText(getActivity(), "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
-                showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+//                showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
                 progressLay2.setVisibility(View.GONE);
                 progressLayDark.setVisibility(View.GONE);
+                errorLay.setVisibility(View.VISIBLE);
             }
         });
     }
+
     CoordinatorLayout container;
     //snackBar msg
     private void showSnackBar(String msg) {

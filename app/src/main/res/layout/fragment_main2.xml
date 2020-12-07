@@ -227,4 +227,30 @@
         android:text="جاري التحميل.."
         android:textSize="@dimen/txt_normal_size"/>
 </LinearLayout>
+<LinearLayout
+    android:visibility="gone"
+    android:id="@+id/errorLay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+<ImageView
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:src="@drawable/ic_error"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="خطأ بالانترنت الرجاء مراجعة النترنت ثم معاودة الاتصال"
+        android:textSize="@dimen/txt_normal_size"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="اعادة المحاولة"
+        android:id="@+id/reTry"/>
+
+</LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

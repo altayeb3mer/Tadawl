@@ -154,7 +154,7 @@ public class FragmentTabLay extends Fragment {
                 } catch (Exception e) {
                     e.printStackTrace();
 //                    Toast.makeText(getActivity(), "خطأ في التحويل", Toast.LENGTH_SHORT).show();
-                    showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+                    showSnackBar("حدث خطأ الرجاء المحاولة مر اخرى");
                 }
                 progressLay.setVisibility(View.GONE);
             }
@@ -162,7 +162,7 @@ public class FragmentTabLay extends Fragment {
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
 //                Toast.makeText(getActivity(), "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
-                showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+                showSnackBar("حدث خطأ الرجاء المحاولة مر اخرى");
                 progressLay.setVisibility(View.GONE);
             }
         });
@@ -239,7 +239,7 @@ public class FragmentTabLay extends Fragment {
                 } catch (Exception e) {
                     e.printStackTrace();
 //                    Toast.makeText(getActivity(), "خطأ في التحويل", Toast.LENGTH_SHORT).show();
-                    showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+                    showSnackBar("حدث خطأ الرجاء المحاولة مر اخرى");
                 }
                 progressLay.setVisibility(View.GONE);
             }
@@ -247,7 +247,7 @@ public class FragmentTabLay extends Fragment {
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
 //                Toast.makeText(getActivity(), "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
-                showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+                showSnackBar("حدث خطأ الرجاء المحاولة مر اخرى");
                 progressLay.setVisibility(View.GONE);
             }
         });
