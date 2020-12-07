@@ -4,12 +4,15 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
 import com.example.tadawl.Model.ModelSlideImg;
 import com.example.tadawl.R;
+import com.example.tadawl.Utils.Api;
 
 import java.util.ArrayList;
 
@@ -37,7 +40,6 @@ public class SlideShow_adapter extends PagerAdapter {
         return arrayList.size();
     }
 
-
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return (view == (RelativeLayout) object);
@@ -48,7 +50,12 @@ public class SlideShow_adapter extends PagerAdapter {
 
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+        ModelSlideImg item =  arrayList.get(position);
+
         View view = inflater.inflate(R.layout.slider_img, container, false);
+        ImageView imageView = view.findViewById(R.id.img);
+
+        Glide.with(context).load(Api.ROOT_URL+item.getUrl()).into(imageView);
 
         container.addView(view);
 

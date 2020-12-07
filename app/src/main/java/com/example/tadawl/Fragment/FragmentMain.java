@@ -191,6 +191,7 @@ public class FragmentMain extends Fragment {
                                 modelNewAds.setViews(item.getString("views"));
                                 modelNewAds.setRating(item.getString("rating"));
                                 modelNewAds.setImage(item.getString("image"));
+                                modelNewAds.setType(item.getString("type"));
 
                                 arrayList.add(modelNewAds);
                             }
@@ -279,6 +280,7 @@ public class FragmentMain extends Fragment {
                                 modelNewAds.setViews(item.getString("views"));
                                 modelNewAds.setRating(item.getString("rating"));
                                 modelNewAds.setImage(item.getString("image"));
+                                modelNewAds.setType(item.getString("type"));
 
                                 arrayList2.add(modelNewAds);
                             }

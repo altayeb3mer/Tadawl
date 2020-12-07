@@ -132,6 +132,7 @@ public class FragmentTabLay extends Fragment {
                                 modelAds.setViews(object1.getString("views"));
                                 modelAds.setRating(object1.getString("rating"));
                                 modelAds.setImage(object1.getString("image"));
+                                modelAds.setType(object1.getString("type"));
 
                                 arrayList.add(modelAds);
                             }
@@ -216,6 +217,7 @@ public class FragmentTabLay extends Fragment {
                                 modelAds.setViews(object1.getString("views"));
                                 modelAds.setRating(object1.getString("rating"));
                                 modelAds.setImage(object1.getString("image"));
+                                modelAds.setType(object1.getString("type"));
 
                                 arrayList.add(modelAds);
                             }

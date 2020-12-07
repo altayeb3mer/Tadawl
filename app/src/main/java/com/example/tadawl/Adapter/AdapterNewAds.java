@@ -49,7 +49,7 @@ public class AdapterNewAds extends RecyclerView.Adapter<AdapterNewAds.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ModelNewAds item = arrayList.get(position);
+        final ModelNewAds item = arrayList.get(position);
         try {
             Glide.with(activity).load(Api.ROOT_URL+item.getImage())
                     .into(holder.imageView);
@@ -60,7 +60,10 @@ public class AdapterNewAds extends RecyclerView.Adapter<AdapterNewAds.ViewHolder
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.startActivity(new Intent(activity, PostDetails.class));
+                Intent intent = new Intent(activity, PostDetails.class);
+                intent.putExtra("id",item.getId());
+                intent.putExtra("type",item.getType());
+                activity.startActivity(intent);
             }
         });
         holder.textViewTitle.setText(item.getTitle());

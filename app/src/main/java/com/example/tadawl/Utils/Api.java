@@ -71,6 +71,16 @@ public class Api {
         @GET("api/ads")
         Call<String> putParam(@QueryMap HashMap<String, String> params);
     }
+    //get cars details
+    public interface RetrofitGetCarDetails {
+        @GET("api/car")
+        Call<String> putParam(@QueryMap HashMap<String, String> params);
+    }
+    //get estate details
+    public interface RetrofitGetEstateDetails {
+        @GET("api/realestate")
+        Call<String> putParam(@QueryMap HashMap<String, String> params);
+    }
 
 
 

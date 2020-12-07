@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Activity.PostDetails"
     android:layoutDirection="rtl"
-    android:background="@drawable/shape_toolbar_bg">
+    android:background="@drawable/shape_toolbar_bg"
+    android:id="@+id/container">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -25,7 +26,7 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/laySearch"
+                android:id="@+id/layBack"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentLeft="true"
@@ -152,14 +153,15 @@
                                     android:layoutDirection="ltr"/>
 
                                 <TextView
+                                    android:id="@+id/price"
                                     android:paddingLeft="@dimen/margin_normal_size"
                                     android:paddingRight="@dimen/margin_normal_size"
-                                    android:layout_width="88dp"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="25dp"
                                     android:textStyle="bold"
                                     android:textColor="@android:color/white"
                                     android:text="50 مليار جنية"
-                                    android:textSize="@dimen/txt_small_size"
+                                    android:textSize="9sp"
                                     android:layout_margin="@dimen/margin_normal_size"
                                     android:gravity="center"
                                     android:background="@drawable/shape_price_bg"
@@ -169,7 +171,7 @@
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
                         <LinearLayout
-                            android:layout_marginBottom="40dp"
+                            android:layout_marginBottom="80dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
@@ -184,6 +186,7 @@
                                     app:layout_constraintGuide_percent="0.5"
                                     android:id="@+id/g1"/>
                                 <TextView
+                                    android:id="@+id/title"
                                     app:layout_constraintTop_toTopOf="parent"
                                     android:minHeight="50dp"
                                     app:layout_constraintRight_toRightOf="parent"
@@ -208,6 +211,7 @@
                                     android:orientation="horizontal"
                                     android:layoutDirection="ltr">
                                     <TextView
+                                        android:id="@+id/rating"
                                         android:layout_marginRight="@dimen/margin_normal_size"
                                         android:layout_marginLeft="@dimen/margin_normal_size"
                                         android:paddingLeft="@dimen/margin_small_size"
@@ -223,6 +227,7 @@
                                         android:drawablePadding="@dimen/margin_small_size"
                                         />
                                     <TextView
+                                        android:id="@+id/views"
                                         android:layout_centerVertical="true"
                                         android:paddingLeft="@dimen/margin_small_size"
                                         android:paddingRight="@dimen/margin_small_size"
@@ -242,14 +247,176 @@
                                 </LinearLayout>
                             </androidx.constraintlayout.widget.ConstraintLayout>
                             <TextView
+                                android:id="@+id/description"
                                 android:layout_marginBottom="40dp"
                                 android:layout_margin="@dimen/margin_normal_size"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="شقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارشقة للايجارر"
                                 android:textSize="@dimen/txt_normal_size"
-                                android:ellipsize="end"
                                 />
+
+                            <TextView
+                                android:visibility="gone"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintLeft_toRightOf="@+id/g1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_normal_size"
+                                android:layout_marginRight="@dimen/margin_normal_size"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/txt_large_size"
+                                android:textColor="@color/newAdsTitleColor"
+                                android:text="تفاصيل"
+                                android:gravity="center_vertical"/>
+                            <TextView
+                                android:visibility="gone"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintLeft_toRightOf="@+id/g1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_normal_size"
+                                android:layout_marginRight="@dimen/margin_normal_size"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/txt_normal_size"
+                                android:text="الولاية"
+                                android:gravity="center_vertical"
+                                android:textColor="@color/colorPrimary"/>
+                            <TextView
+                                android:visibility="gone"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintLeft_toRightOf="@+id/g1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_normal_size"
+                                android:layout_marginRight="@dimen/margin_normal_size"
+                                android:textSize="@dimen/txt_normal_size"
+                                android:text="الولاية"
+                                android:gravity="center_vertical"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+                            <TextView
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintLeft_toRightOf="@+id/g1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_normal_size"
+                                android:layout_marginRight="@dimen/margin_normal_size"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/txt_normal_size"
+                                android:text="المدينة"
+                                android:gravity="center_vertical"
+                                android:textColor="@color/colorPrimary"/>
+                            <TextView
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintLeft_toRightOf="@+id/g1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_normal_size"
+                                android:layout_marginRight="@dimen/margin_normal_size"
+                                android:textSize="@dimen/txt_normal_size"
+                                android:text="المدينة"
+                                android:gravity="center_vertical"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+                                <TextView
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintLeft_toRightOf="@+id/g1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_normal_size"
+                                    android:layout_marginRight="@dimen/margin_normal_size"
+                                    android:textStyle="bold"
+                                    android:textSize="@dimen/txt_normal_size"
+                                    android:text="الشركة"
+                                    android:gravity="center_vertical"
+                                    android:textColor="@color/colorPrimary"/>
+                                <TextView
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintLeft_toRightOf="@+id/g1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_normal_size"
+                                    android:layout_marginRight="@dimen/margin_normal_size"
+                                    android:textSize="@dimen/txt_normal_size"
+                                    android:text="كيا"
+                                    android:gravity="center_vertical"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+                                <TextView
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintLeft_toRightOf="@+id/g1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_normal_size"
+                                    android:layout_marginRight="@dimen/margin_normal_size"
+                                    android:textStyle="bold"
+                                    android:textSize="@dimen/txt_normal_size"
+                                    android:text="الحالة"
+                                    android:gravity="center_vertical"
+                                    android:textColor="@color/colorPrimary"/>
+                                <TextView
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintLeft_toRightOf="@+id/g1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_normal_size"
+                                    android:layout_marginRight="@dimen/margin_normal_size"
+                                    android:textSize="@dimen/txt_normal_size"
+                                    android:text="مستعملة"
+                                    android:gravity="center_vertical"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintLeft_toRightOf="@+id/g1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_normal_size"
+                                    android:layout_marginRight="@dimen/margin_normal_size"
+                                    android:textStyle="bold"
+                                    android:textSize="@dimen/txt_normal_size"
+                                    android:text="الموديل"
+                                    android:gravity="center_vertical"
+                                    android:textColor="@color/colorPrimary"/>
+                                <TextView
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintLeft_toRightOf="@+id/g1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_normal_size"
+                                    android:layout_marginRight="@dimen/margin_normal_size"
+                                    android:textSize="@dimen/txt_normal_size"
+                                    android:text="الموديل"
+                                    android:gravity="center_vertical"/>
+                            </LinearLayout>
+
 
 
 
@@ -260,6 +427,7 @@
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
             <LinearLayout
+                android:id="@+id/callBtn"
                 android:elevation="10dp"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -278,5 +446,24 @@
 
     </androidx.core.widget.NestedScrollView>
 
+    <LinearLayout
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/progressLay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@color/black30">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            style="@style/AVLoadingIndicatorView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="visible"
+            app:indicatorColor="@color/colorPrimary"
+            app:indicatorName="LineSpinFadeLoaderIndicator" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

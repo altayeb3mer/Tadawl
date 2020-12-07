@@ -1,8 +1,10 @@
 package com.example.tadawl.Activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,27 +18,47 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.tadawl.Adapter.SlideShow_adapter;
+import com.example.tadawl.Model.ModelNewAds;
 import com.example.tadawl.Model.ModelSlideImg;
 import com.example.tadawl.R;
+import com.example.tadawl.Utils.Api;
+import com.google.android.material.snackbar.Snackbar;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import me.relex.circleindicator.CircleIndicator;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class PostDetails extends AppCompatActivity {
 
     ViewPager viewPager;
     SlideShow_adapter slideShowAdapter;
-    ArrayList<ModelSlideImg> arrayList;
+    ArrayList<ModelSlideImg> arrayListImage;
     CircleIndicator circleIndicator;
     Toolbar toolbar;
 
-    LinearLayout layoutMenu;
+    LinearLayout layoutMenu,progressLay,callLay,layBack;
     PopupMenu popup;
+    String id = "",type="";
+    ConstraintLayout container;
+    TextView price,title,views,rating,description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +68,58 @@ public class PostDetails extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.hideOverflowMenu();
-
-
         init();
+
+
+        Bundle args = getIntent().getExtras();
+        if (args!=null){
+            id = args.getString("id");
+            type = args.getString("type");
+            switch (type){
+                case "car":{
+                    getCarsDetails();
+                    break;
+                }
+                case "realestate":{
+                    getEstateDetails();
+                    break;
+                }
+            }
+        }
+
     }
 
     private void init() {
+        layBack = findViewById(R.id.layBack);
+        layBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        price = findViewById(R.id.price);
+        title = findViewById(R.id.title);
+        rating = findViewById(R.id.rating);
+        views = findViewById(R.id.views);
+        description = findViewById(R.id.description);
+        callLay = findViewById(R.id.callBtn);
+        callLay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CALL(phone);
+            }
+        });
+
+
+
+
+        progressLay = findViewById(R.id.progressLay);
+        container = findViewById(R.id.container);
+        initPopupMenu();
+
+    }
+
+    private void initPopupMenu(){
         layoutMenu = findViewById(R.id.layMenu);
         layoutMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,19 +151,14 @@ public class PostDetails extends AppCompatActivity {
                 popup.show();
 
             }
-        });
-        arrayList = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            ModelSlideImg modelSlideImg = new ModelSlideImg();
-            modelSlideImg.setId(i + "");
-            arrayList.add(modelSlideImg);
-        }
+        });    }
+
+    private void initSlider(ArrayList<ModelSlideImg> arrayImages){
         viewPager = findViewById(R.id.viewpager);
-        slideShowAdapter = new SlideShow_adapter(getApplicationContext(), arrayList);
+        slideShowAdapter = new SlideShow_adapter(getApplicationContext(), arrayImages);
         circleIndicator = findViewById(R.id.indicator);
         viewPager.setAdapter(slideShowAdapter);
         circleIndicator.setViewPager(viewPager);
-
     }
 
     @Override
@@ -141,6 +204,277 @@ public class PostDetails extends AppCompatActivity {
         dialog.show();
     }
 
+    private void getCarsDetails() {
+        arrayListImage = new ArrayList<>();
+        progressLay.setVisibility(View.VISIBLE);
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public okhttp3.Response intercept(Chain chain) throws IOException {
+                        okhttp3.Request.Builder ongoing = chain.request().newBuilder();
+                        ongoing.addHeader("Content-Type", "application/json;");
+                        ongoing.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
+                        return chain.proceed(ongoing.build());
+                    }
+                })
+                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.ROOT_URL)
+                .client(httpClient)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        Api.RetrofitGetCarDetails service = retrofit.create(Api.RetrofitGetCarDetails.class);
+        HashMap<String, String> hashMap=new HashMap<>();
+        hashMap.put("id",id);
+        Call<String> call = service.putParam(hashMap);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, retrofit2.Response<String> response) {
+                try {
+                    JSONObject object = new JSONObject(response.body());
+                    String statusCode = object.getString("status_code");
+                    JSONObject data = object.getJSONObject("data");
+                    switch (statusCode) {
+                        case "200": {
+                            String image1 = data.getString("image1");
+                            if (!image1.equals("")&&!image1.equals("null")){
+                                ModelSlideImg modelSlideImg = new ModelSlideImg();
+                                modelSlideImg.setUrl(image1);
+                                arrayListImage.add(modelSlideImg);
+                            }
+                            String image2 = data.getString("image2");
+                            if (!image2.equals("")&&!image2.equals("null")){
+                                ModelSlideImg modelSlideImg = new ModelSlideImg();
+                                modelSlideImg.setUrl(image2);
+                                arrayListImage.add(modelSlideImg);
+                            }
+                            String image3 = data.getString("image3");
+                            if (!image3.equals("")&&!image3.equals("null")){
+                                ModelSlideImg modelSlideImg = new ModelSlideImg();
+                                modelSlideImg.setUrl(image3);
+                                arrayListImage.add(modelSlideImg);
+                            }
+                            String image4 = data.getString("image4");
+                            if (!image4.equals("")&&!image4.equals("null")){
+                                ModelSlideImg modelSlideImg = new ModelSlideImg();
+                                modelSlideImg.setUrl(image4);
+                                arrayListImage.add(modelSlideImg);
+                            }
+                            String image5 = data.getString("image5");
+                            if (!image5.equals("")&&!image5.equals("null")){
+                                ModelSlideImg modelSlideImg = new ModelSlideImg();
+                                modelSlideImg.setUrl(image5);
+                                arrayListImage.add(modelSlideImg);
+                            }
+                            initSlider(arrayListImage);
+
+
+                            price.setText(data.getString("price")+" "+"جنيه سوداني");
+                            title.setText(data.getString("title"));
+                            views.setText(data.getString("views"));
+                            rating.setText(data.getString("rating"));
+                            description.setText(data.getString("description"));
+                            description.append("\n \nالولاية"+" : "+data.getString("state")+"\n");
+                            description.append("المدينة"+" : "+data.getString("city")+"\n");
+                            description.append("النوع"+" : "+data.getString("ad_type")+"\n");
+                            description.append("الشركة المصنعة"+" : "+data.getString("company")+"\n");
+                            description.append("نوع القيادة"+" : "+data.getString("transmission")+"\n");
+                            description.append("الحالة"+" : "+data.getString("is_new")+"\n");
+                            description.append("الموديل"+" : "+data.getString("model")+"\n");
+                            description.append("سنة الصنع"+" : "+data.getString("year")+"\n");
+                            description.append("اللون"+" : "+data.getString("color")+"\n");
+                            description.append("تاريخ الاعلان"+" : "+data.getString("created_at")+"\n");
+
+
+                            phone = data.getString("owner_phone");
+
+
+
+                            break;
+                        }
+
+                        default: {
+                            Toast.makeText(PostDetails.this, "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+                    }
+
+                    progressLay.setVisibility(View.GONE);
+                } catch (Exception e) {
+                    e.printStackTrace();
+//                    Toast.makeText(getActivity(), "خطأ في التحويل", Toast.LENGTH_SHORT).show();
+                }
+                progressLay.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable throwable) {
+//                Toast.makeText(getActivity(), "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
+                showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+                progressLay.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    private void getEstateDetails() {
+        arrayListImage = new ArrayList<>();
+        progressLay.setVisibility(View.VISIBLE);
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public okhttp3.Response intercept(Chain chain) throws IOException {
+                        okhttp3.Request.Builder ongoing = chain.request().newBuilder();
+                        ongoing.addHeader("Content-Type", "application/json;");
+                        ongoing.addHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                        return chain.proceed(ongoing.build());
+                    }
+                })
+                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.ROOT_URL)
+                .client(httpClient)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        Api.RetrofitGetEstateDetails service = retrofit.create(Api.RetrofitGetEstateDetails.class);
+        HashMap<String, String> hashMap=new HashMap<>();
+        hashMap.put("id",id);
+        Call<String> call = service.putParam(hashMap);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, retrofit2.Response<String> response) {
+                try {
+                    JSONObject object = new JSONObject(response.body());
+                    String statusCode = object.getString("status_code");
+                    JSONObject data = object.getJSONObject("data");
+                    switch (statusCode) {
+                        case "200": {
+                            String image1 = data.getString("image1");
+                            if (!image1.equals("")&&!image1.equals("null")){
+                                ModelSlideImg modelSlideImg = new ModelSlideImg();
+                                modelSlideImg.setUrl(image1);
+                                arrayListImage.add(modelSlideImg);
+                            }
+                            String image2 = data.getString("image2");
+                            if (!image2.equals("")&&!image2.equals("null")){
+                                ModelSlideImg modelSlideImg = new ModelSlideImg();
+                                modelSlideImg.setUrl(image2);
+                                arrayListImage.add(modelSlideImg);
+                            }
+                            String image3 = data.getString("image3");
+                            if (!image3.equals("")&&!image3.equals("null")){
+                                ModelSlideImg modelSlideImg = new ModelSlideImg();
+                                modelSlideImg.setUrl(image3);
+                                arrayListImage.add(modelSlideImg);
+                            }
+                            String image4 = data.getString("image4");
+                            if (!image4.equals("")&&!image4.equals("null")){
+                                ModelSlideImg modelSlideImg = new ModelSlideImg();
+                                modelSlideImg.setUrl(image4);
+                                arrayListImage.add(modelSlideImg);
+                            }
+                            String image5 = data.getString("image5");
+                            if (!image5.equals("")&&!image5.equals("null")){
+                                ModelSlideImg modelSlideImg = new ModelSlideImg();
+                                modelSlideImg.setUrl(image5);
+                                arrayListImage.add(modelSlideImg);
+                            }
+                            initSlider(arrayListImage);
+
+
+                            price.setText(data.getString("price")+" "+"جنيه سوداني");
+                            title.setText(data.getString("title"));
+                            views.setText(data.getString("views"));
+                            rating.setText(data.getString("rating"));
+                            description.setText(data.getString("description"));
+                            description.append("\n \nالولاية"+" : "+data.getString("state")+"\n");
+                            description.append("المدينة"+" : "+data.getString("city")+"\n");
+                            description.append("النوع"+" : "+data.getString("ad_type")+"\n");
+                            description.append("التصنيف"+" : "+data.getString("category")+"\n");
+                            description.append("عدد الغرف"+" : "+data.getString("number_of_rooms")+"\n");
+                            description.append("اسم الحي"+" : "+data.getString("neighborhood")+"\n");
+                            description.append("المساحة"+" : "+data.getString("area")+"\n");
+//                            description.append("الموديل"+" : "+data.getString("model")+"\n");
+//                            description.append("سنة الصنع"+" : "+data.getString("year")+"\n");
+//                            description.append("اللون"+" : "+data.getString("color")+"\n");
+                            description.append("تاريخ الاعلان"+" : "+data.getString("created_at")+"\n");
+
+
+                            phone = data.getString("owner_phone");
+
+
+                            break;
+                        }
+
+                        default: {
+                            Toast.makeText(PostDetails.this, "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+                    }
+
+                    progressLay.setVisibility(View.GONE);
+                } catch (Exception e) {
+                    e.printStackTrace();
+//                    Toast.makeText(getActivity(), "خطأ في التحويل", Toast.LENGTH_SHORT).show();
+                }
+                progressLay.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable throwable) {
+//                Toast.makeText(getActivity(), "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
+                showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+                progressLay.setVisibility(View.GONE);
+            }
+        });
+    }
+
+
+    public void showSnackBarBtn(String msg) {
+        final Snackbar snackbar = Snackbar.make(container, msg, Snackbar.LENGTH_INDEFINITE);
+        View snackview = snackbar.getView();
+        snackview.setBackgroundColor(Color.RED);
+        TextView masseage;
+        masseage = snackview.findViewById(R.id.snackbar_text);
+        masseage.setTextSize(16);
+        masseage.setTextColor(Color.WHITE);
+        snackbar.setAction("اعادة المحاولة", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Call your action method here
+                switch (type){
+                    case "cars":{
+                        getCarsDetails();
+                        break;
+                    }
+                    case "realestate":{
+                        getEstateDetails();
+                        break;
+                    }
+                }
+                snackbar.dismiss();
+            }
+        }).setActionTextColor(getResources().getColor(R.color.colorPrimary));
+        snackbar.show();
+    }
+
+    String phone = "";
+    private void CALL(String phone) {
+        String uri = "tel:" + phone;
+        Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.parse(uri));
+        callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(callIntent);
+    }
 
 }
