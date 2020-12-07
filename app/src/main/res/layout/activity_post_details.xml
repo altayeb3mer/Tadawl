@@ -9,7 +9,6 @@
     android:background="@drawable/shape_toolbar_bg"
     android:id="@+id/container">
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -98,6 +97,7 @@
             </LinearLayout>
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
