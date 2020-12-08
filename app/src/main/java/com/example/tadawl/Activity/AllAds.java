@@ -50,12 +50,14 @@ public class AllAds extends AppCompatActivity {
     AdapterNewAds adapterNewAds;
     ArrayList<ModelNewAds> arrayList;
     GridLayoutManager gridLayoutManager;
-    LinearLayout layBack,progressLay;
+    LinearLayout layBack,progressLay,progressLayPage;
     String type = "";
     TextView title;
     String currentPage="",lastPage="",perPage="";
     boolean isLoading = false;
     NestedScrollView nestedScroll;
+
+    boolean paging=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +96,7 @@ public class AllAds extends AppCompatActivity {
                     Log.i(TAG, "BOTTOM SCROLL");
 
                     if (Double.parseDouble(lastPage) > Double.parseDouble(currentPage) && !isLoading )
+                        paging=true;
                         getCarsOrEstate(Integer.parseInt(currentPage) + 1 + "");
                 }
 
@@ -118,6 +121,7 @@ public class AllAds extends AppCompatActivity {
     }
 
     private void init() {
+        progressLayPage = findViewById(R.id.progressLayPage);
         title = findViewById(R.id.title);
         container = findViewById(R.id.container);
         nestedScroll = findViewById(R.id.nestedScroll);
@@ -143,7 +147,12 @@ public class AllAds extends AppCompatActivity {
 
     private void getCarsOrEstate(String page) {
         isLoading = true;
-        progressLay.setVisibility(View.VISIBLE);
+        if (paging){
+            progressLayPage.setVisibility(View.VISIBLE);
+        }else{
+            progressLay.setVisibility(View.VISIBLE);
+        }
+
         OkHttpClient httpClient = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
                     @Override
@@ -216,6 +225,7 @@ public class AllAds extends AppCompatActivity {
                     }
 
                     progressLay.setVisibility(View.GONE);
+                    progressLayPage.setVisibility(View.GONE);
                     isLoading = false;
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -224,6 +234,7 @@ public class AllAds extends AppCompatActivity {
                     isLoading = false;
                 }
                 progressLay.setVisibility(View.GONE);
+                progressLayPage.setVisibility(View.GONE);
             }
 
             @Override
@@ -232,6 +243,7 @@ public class AllAds extends AppCompatActivity {
                 showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
                 isLoading = false;
                 progressLay.setVisibility(View.GONE);
+                progressLayPage.setVisibility(View.GONE);
             }
         });
     }
@@ -305,4 +317,5 @@ public class AllAds extends AppCompatActivity {
         }).setActionTextColor(getResources().getColor(R.color.colorPrimary));
         snackbar.show();
     }
+
 }
