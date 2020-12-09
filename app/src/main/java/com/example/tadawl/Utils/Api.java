@@ -81,7 +81,26 @@ public class Api {
         @GET("api/realestate")
         Call<String> putParam(@QueryMap HashMap<String, String> params);
     }
-
+    //get favorite
+    public interface RetrofitGetFavorite {
+        @GET("api/favourite-ads")
+        Call<String> putParam(@QueryMap HashMap<String, String> params);
+    }
+    //add to favorite
+    public interface RetrofitAddFavorite {
+        @POST("api/toggle-favourite")
+        Call<String> putParam(@Body HashMap<String, String> params);
+    }
+    //report
+    public interface RetrofitReportAds {
+        @POST("api/report")
+        Call<String> putParam(@Body HashMap<String, String> params);
+    }
+    //rate
+    public interface RetrofitRating {
+        @POST("api/rate")
+        Call<String> putParam(@Body HashMap<String, String> params);
+    }
 
 
 }

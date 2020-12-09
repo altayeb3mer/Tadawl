@@ -12,7 +12,6 @@
     android:id="@+id/container">
 
     <androidx.appcompat.widget.Toolbar
-        android:visibility="gone"
         android:id="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@android:color/transparent"
@@ -200,7 +199,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="لم تقم باضافة اعلانات حتى الان"
+            android:text="لم تقم بتحديد اعلانات مفضلة حتى الان"
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_normal_size"/>

@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import com.example.tadawl.Fragment.FragmentMain;
 import com.example.tadawl.R;
 import com.example.tadawl.Utils.CustomViewPager;
 import com.example.tadawl.Adapter.ViewPagerAdapter;
+import com.example.tadawl.Utils.SharedPrefManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_drawer);
+        String token = SharedPrefManager.getInstance(this).GetToken();
+        Toast.makeText(this, token, Toast.LENGTH_SHORT).show();
         init();
     }
 
@@ -97,11 +101,11 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-
-
-
-
-
+            case R.id.nav_menu_favorite:{
+                startActivity(new Intent(getApplicationContext(),FavoriteAds.class));
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+            }
 
         }
         return true;
@@ -161,7 +165,8 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
             if (viewPager.getCurrentItem()==0){
                 super.onBackPressed();
             }else{
-                viewPager.setCurrentItem(0);
+                switchToFragment(1);
+//                viewPager.setCurrentItem(0);
             }
         }
     }

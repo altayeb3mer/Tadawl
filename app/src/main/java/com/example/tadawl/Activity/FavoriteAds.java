@@ -1,21 +1,18 @@
-package com.example.tadawl.Fragment;
+package com.example.tadawl.Activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.widget.NestedScrollView;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tadawl.Adapter.AdapterNewAds;
 import com.example.tadawl.Model.ModelNewAds;
@@ -42,15 +39,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 import static android.content.ContentValues.TAG;
 
-
-public class Fragment3 extends Fragment {
-
-
-    public Fragment3() {
-        // Required empty public constructor
-    }
-
-    View view;
+public class FavoriteAds extends AppCompatActivity {
     RecyclerView recycler;
     AdapterNewAds adapterNewAds;
     ArrayList<ModelNewAds> arrayList;
@@ -66,10 +55,9 @@ public class Fragment3 extends Fragment {
     ConstraintLayout container;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_3, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_favorite_ads);
         arrayList = new ArrayList<>();
         init();
         getFavorite("");
@@ -99,18 +87,24 @@ public class Fragment3 extends Fragment {
 
             }
         });
-        return view;
     }
 
     private void init() {
-        layNoData = view.findViewById(R.id.layNoData);
-        progressLayPage = view.findViewById(R.id.progressLayPage);
-        title = view.findViewById(R.id.title);
-        container = view.findViewById(R.id.container);
-        nestedScroll = view.findViewById(R.id.nestedScroll);
-        progressLay = view.findViewById(R.id.progressLay);
-        gridLayoutManager = new GridLayoutManager(getContext(), 3, GridLayoutManager.VERTICAL, false);
-        recycler = view.findViewById(R.id.recycler);
+        layNoData = findViewById(R.id.layNoData);
+        progressLayPage = findViewById(R.id.progressLayPage);
+        title = findViewById(R.id.title);
+        container = findViewById(R.id.container);
+        nestedScroll = findViewById(R.id.nestedScroll);
+        progressLay = findViewById(R.id.progressLay);
+        layBack = findViewById(R.id.laySearch);
+        layBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        gridLayoutManager = new GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false);
+        recycler = findViewById(R.id.recycler);
         recycler.setLayoutManager(gridLayoutManager);
     }
 
@@ -129,7 +123,7 @@ public class Fragment3 extends Fragment {
                         okhttp3.Request.Builder ongoing = chain.request().newBuilder();
                         ongoing.addHeader("Content-Type", "application/json;");
                         ongoing.addHeader("Content-Type", "application/x-www-form-urlencoded");
-                        String token = SharedPrefManager.getInstance(getActivity()).GetToken();
+                        String token = SharedPrefManager.getInstance(getApplicationContext()).GetToken();
                         ongoing.addHeader("Authorization", token);
                         return chain.proceed(ongoing.build());
                     }
@@ -191,7 +185,7 @@ public class Fragment3 extends Fragment {
                         }
 
                         default: {
-                            Toast.makeText(getActivity(), "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
                             break;
                         }
                     }
@@ -201,7 +195,7 @@ public class Fragment3 extends Fragment {
                     isLoading = false;
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
 //                    showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
                     isLoading = false;
                 }
@@ -221,7 +215,7 @@ public class Fragment3 extends Fragment {
     }
 
     private void initAdapter(ArrayList<ModelNewAds> array) {
-        adapterNewAds = new AdapterNewAds(getActivity(), array);
+        adapterNewAds = new AdapterNewAds(this, array);
         recycler.setAdapter(adapterNewAds);
         recycler.smoothScrollToPosition(arrayList.size() - Integer.parseInt(perPage));
 
