@@ -6,21 +6,20 @@
         android:orderInCategory="1"
         android:icon="@drawable/ic_home"
         />
-
     <item android:id="@+id/btn_nav2"
         android:title="البروفايل"
         android:orderInCategory="2"
         android:icon="@drawable/ic_profile"
         />
     <item android:id="@+id/btn_nav3"
-        android:title="منشوراتا"
+        android:title="منشوراتي"
         android:orderInCategory="3"
-        android:icon="@drawable/ic_profile"
+        android:icon="@drawable/ic_my_ads"
         />
     <item android:id="@+id/btn_nav4"
         android:title="الضبط"
         android:orderInCategory="4"
-        android:icon="@drawable/ic_profile"
+        android:icon="@drawable/ic_setting_"
         />
 
 </menu>

@@ -86,6 +86,16 @@ public class Api {
         @GET("api/favourite-ads")
         Call<String> putParam(@QueryMap HashMap<String, String> params);
     }
+    //get my ads
+    public interface RetrofitMyAds {
+        @GET("api/my-ads")
+        Call<String> putParam(@QueryMap HashMap<String, String> params);
+    }
+    //get profile
+    public interface RetrofitGetProfile {
+        @GET("api/account-details")
+        Call<String> putParam();
+    }
     //add to favorite
     public interface RetrofitAddFavorite {
         @POST("api/toggle-favourite")
@@ -99,6 +109,11 @@ public class Api {
     //rate
     public interface RetrofitRating {
         @POST("api/rate")
+        Call<String> putParam(@Body HashMap<String, String> params);
+    }
+    //edit profile
+    public interface RetrofitEditProfile {
+        @POST("api/edit-profile")
         Call<String> putParam(@Body HashMap<String, String> params);
     }
 

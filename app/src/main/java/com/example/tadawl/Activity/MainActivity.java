@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_drawer);
-        String token = SharedPrefManager.getInstance(this).GetToken();
-        Toast.makeText(this, token, Toast.LENGTH_SHORT).show();
+//        String token = SharedPrefManager.getInstance(this).GetToken();
+//        Toast.makeText(this, token, Toast.LENGTH_SHORT).show();
         init();
     }
 
@@ -170,6 +170,5 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
             }
         }
     }
-
 
 }

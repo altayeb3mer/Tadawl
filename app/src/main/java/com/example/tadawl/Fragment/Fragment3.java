@@ -72,7 +72,7 @@ public class Fragment3 extends Fragment {
         view = inflater.inflate(R.layout.fragment_3, container, false);
         arrayList = new ArrayList<>();
         init();
-        getFavorite("");
+        getMyAds("");
         //get last view on nestedScrollView
         nestedScroll.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
@@ -94,7 +94,7 @@ public class Fragment3 extends Fragment {
 
                     if (Double.parseDouble(lastPage) > Double.parseDouble(currentPage) && !isLoading )
                         paging=true;
-                    getFavorite(Integer.parseInt(currentPage) + 1 + "");
+                    getMyAds(Integer.parseInt(currentPage) + 1 + "");
                 }
 
             }
@@ -114,7 +114,7 @@ public class Fragment3 extends Fragment {
         recycler.setLayoutManager(gridLayoutManager);
     }
 
-    private void getFavorite(String page) {
+    private void getMyAds(String page) {
         isLoading = true;
         if (paging) {
             progressLayPage.setVisibility(View.VISIBLE);
@@ -145,7 +145,7 @@ public class Fragment3 extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        Api.RetrofitGetFavorite service = retrofit.create(Api.RetrofitGetFavorite.class);
+        Api.RetrofitMyAds service = retrofit.create(Api.RetrofitMyAds.class);
         HashMap<String, String> hashMap=new HashMap<>();
         hashMap.put("page",page);
         Call<String> call = service.putParam(hashMap);
@@ -239,7 +239,7 @@ public class Fragment3 extends Fragment {
             @Override
             public void onClick(View v) {
                 // Call your action method here
-                getFavorite(currentPage);
+                getMyAds(currentPage);
                 snackbar.dismiss();
             }
         }).setActionTextColor(getResources().getColor(R.color.colorPrimary));
