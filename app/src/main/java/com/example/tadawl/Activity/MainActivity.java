@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
     private CustomViewPager viewPager;
     DrawerLayout drawerLayout;
     public static NavigationView navigationView;
-    LinearLayout nav_drawer_lay;
+    LinearLayout nav_drawer_lay,laySearch;
     ImageView addPost;
 
     @Override
@@ -45,6 +45,13 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
     }
 
     private void init() {
+        laySearch =  findViewById(R.id.laySearch);
+        laySearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),SearchActivity.class));
+            }
+        });
         addPost =  findViewById(R.id.addPost);
         nav_drawer_lay =  findViewById(R.id.nav_drawer_lay);
         viewPager =  findViewById(R.id.viewpager);

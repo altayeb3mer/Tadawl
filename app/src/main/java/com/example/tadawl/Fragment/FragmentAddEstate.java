@@ -703,7 +703,13 @@ public class FragmentAddEstate extends Fragment {
                 hasImage = true;
                 final Uri imageUri = data.getData();
                 final InputStream imageStream = getActivity().getContentResolver().openInputStream(imageUri);
-                final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+
+                selectedImage = Bitmap.createScaledBitmap(selectedImage, 500, 500, false);
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                selectedImage.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+
+
                 switch (imgNo) {
                     case "1": {
 //                        Glide.with(getActivity()).load(selectedImage).into(imageView1);

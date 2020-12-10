@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.FavoriteAds"></activity>
+        <activity android:name=".Activity.SearchActivity"></activity>
+        <activity android:name=".Activity.FavoriteAds" />
         <activity android:name=".Activity.AllAds" />
         <activity android:name=".Activity.PostDetails" />
         <activity android:name=".Activity.AddSuccess" />

@@ -96,6 +96,11 @@ public class Api {
         @GET("api/account-details")
         Call<String> putParam();
     }
+    //search
+    public interface RetrofitSearch {
+        @GET("api/search")
+        Call<String> putParam(@QueryMap HashMap<String, String> params);
+    }
     //add to favorite
     public interface RetrofitAddFavorite {
         @POST("api/toggle-favourite")
