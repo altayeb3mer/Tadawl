@@ -55,7 +55,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 import static android.app.Activity.RESULT_OK;
 
 public class FragmentAddEstate extends Fragment {
-
     public static final int PICK_IMAGE = 1;
     View view;
     AppCompatButton btn;
