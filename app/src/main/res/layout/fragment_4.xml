@@ -36,7 +36,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -66,7 +65,7 @@
                     android:gravity="center_vertical"
                     android:layout_marginRight="@dimen/margin_small_size"
                     android:layout_marginLeft="@dimen/margin_small_size"
-                    android:text="تسجيل جروج"
+                    android:text="تسجيل خروج"
                     android:textColor="@color/colorPrimary"
                     android:layout_toLeftOf="@+id/ic_icon1"
                     android:textSize="22sp"
@@ -98,7 +97,7 @@
                     android:textStyle="bold"/>
             </RelativeLayout>
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
 
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

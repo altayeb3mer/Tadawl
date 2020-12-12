@@ -360,7 +360,12 @@ public class Fragment2 extends Fragment {
             try {
                 final Uri imageUri = data.getData();
                 final InputStream imageStream = context.getContentResolver().openInputStream(imageUri);
-                final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                selectedImage = Bitmap.createScaledBitmap(selectedImage, 500, 500, false);
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                selectedImage.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+
+
                 circleImageView.setImageBitmap(selectedImage);
                 editProfile("image",getStringFromImg(selectedImage));
 
