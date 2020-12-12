@@ -38,6 +38,7 @@
             </LinearLayout>
 
             <ImageView
+                android:visibility="invisible"
                 android:layout_width="37dp"
                 android:layout_height="37dp"
                 android:layout_centerVertical="true"

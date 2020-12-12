@@ -1,10 +1,12 @@
 package com.example.tadawl.Fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
@@ -103,7 +105,7 @@ public class FragmentMain extends Fragment {
         txtShowMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AllAds.class);
+                Intent intent = new Intent(context, AllAds.class);
                 intent.putExtra("type","cars");
                 startActivity(intent);
             }
@@ -111,7 +113,7 @@ public class FragmentMain extends Fragment {
         txtShowMore2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AllAds.class);
+                Intent intent = new Intent(context, AllAds.class);
                 intent.putExtra("type","realestates");
                 startActivity(intent);
             }
@@ -218,7 +220,7 @@ public class FragmentMain extends Fragment {
                         }
 
                         default: {
-                            Toast.makeText(getActivity(), "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
                             break;
                         }
                     }
@@ -228,7 +230,7 @@ public class FragmentMain extends Fragment {
                     errorLay.setVisibility(View.GONE);
                 } catch (Exception e) {
                     e.printStackTrace();
-//                    Toast.makeText(getActivity(), "خطأ في التحويل", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, "خطأ في التحويل", Toast.LENGTH_SHORT).show();
 //                    showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
                     errorLay.setVisibility(View.VISIBLE);
                 }
@@ -239,7 +241,7 @@ public class FragmentMain extends Fragment {
 
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
-//                Toast.makeText(getActivity(), "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
 //                showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
                 progressLay.setVisibility(View.GONE);
                 progressLayDark.setVisibility(View.GONE);
@@ -312,7 +314,7 @@ public class FragmentMain extends Fragment {
                         }
 
                         default: {
-                            Toast.makeText(getActivity(), "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
                             break;
                         }
                     }
@@ -322,7 +324,7 @@ public class FragmentMain extends Fragment {
                     errorLay.setVisibility(View.GONE);
                 } catch (Exception e) {
                     e.printStackTrace();
-//                    Toast.makeText(getActivity(), "خطأ في التحويل", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, "خطأ في التحويل", Toast.LENGTH_SHORT).show();
 //                    showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
                     errorLay.setVisibility(View.VISIBLE);
                 }
@@ -332,7 +334,7 @@ public class FragmentMain extends Fragment {
 
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
-//                Toast.makeText(getActivity(), "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
 //                showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
                 progressLay2.setVisibility(View.GONE);
                 progressLayDark.setVisibility(View.GONE);
@@ -372,6 +374,11 @@ public class FragmentMain extends Fragment {
         }).setActionTextColor(getResources().getColor(R.color.colorPrimary));
         snackbar.show();
     }
-
+    Context context;
+    @Override
+    public void onAttach(@NonNull Context context) {
+        this.context = context;
+        super.onAttach(context);
+    }
 
 }

@@ -35,6 +35,12 @@ public class SharedPrefManager {
         return sharedPreferences.getString(KEY_ACCESS_TOKEN, "");
     }
 
+    public void logOut() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_ACCESS_TOKEN, "");
+        editor.apply();
+    }
 
     public void PutOpenState(boolean val) {
         SharedPreferences sp = mCtx.getSharedPreferences(SHARED_PREF_NAME, mCtx.MODE_PRIVATE);

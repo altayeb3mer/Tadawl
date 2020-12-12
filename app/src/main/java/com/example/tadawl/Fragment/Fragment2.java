@@ -1,6 +1,8 @@
 package com.example.tadawl.Fragment;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
@@ -58,6 +62,7 @@ public class Fragment2 extends Fragment {
     String s_name = "", s_phone = "", s_img = "";
     ImageView imgEditName,imgEditPhone;
     public static final int PICK_IMAGE = 1;
+    ImageView imgPick;
 
     public Fragment2() {
         // Required empty public constructor
@@ -80,6 +85,7 @@ public class Fragment2 extends Fragment {
     }
 
     private void init() {
+        imgPick = view.findViewById(R.id.imgPick);
         imgEditName = view.findViewById(R.id.edit_name);
         imgEditPhone = view.findViewById(R.id.edit_phone);
         imgEditName.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +108,12 @@ public class Fragment2 extends Fragment {
                 pickImage();
             }
         });
+        imgPick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pickImage();
+            }
+        });
         textViewName = view.findViewById(R.id.name);
         textViewPhone = view.findViewById(R.id.phone);
         progressLay = view.findViewById(R.id.progressLay);
@@ -111,7 +123,7 @@ public class Fragment2 extends Fragment {
         textViewName.setText(s_name);
         textViewPhone.setText(s_phone);
         if (!s_img.equals("")&&!s_img.equals("null")){
-            Glide.with(getActivity()).load(Api.ROOT_URL+s_img).into(circleImageView);
+            Glide.with(context).load(Api.ROOT_URL+s_img).into(circleImageView);
         }
     }
 
@@ -124,7 +136,7 @@ public class Fragment2 extends Fragment {
                         okhttp3.Request.Builder ongoing = chain.request().newBuilder();
                         ongoing.addHeader("Content-Type", "application/json;");
                         ongoing.addHeader("Content-Type", "application/x-www-form-urlencoded");
-                        String token = SharedPrefManager.getInstance(getActivity()).GetToken();
+                        String token = SharedPrefManager.getInstance(context).GetToken();
                         ongoing.addHeader("Authorization", token);
                         return chain.proceed(ongoing.build());
                     }
@@ -173,14 +185,14 @@ public class Fragment2 extends Fragment {
                         }
 
                         default: {
-                            Toast.makeText(getActivity(), "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
                             break;
                         }
                     }
                     progressLay.setVisibility(View.GONE);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 progressLay.setVisibility(View.GONE);
             }
@@ -200,7 +212,7 @@ public class Fragment2 extends Fragment {
                         okhttp3.Request.Builder ongoing = chain.request().newBuilder();
                         ongoing.addHeader("Content-Type", "application/json;");
                         ongoing.addHeader("Content-Type", "application/x-www-form-urlencoded");
-                        String token = SharedPrefManager.getInstance(getActivity()).GetToken();
+                        String token = SharedPrefManager.getInstance(context).GetToken();
                         ongoing.addHeader("Authorization", token);
                         return chain.proceed(ongoing.build());
                     }
@@ -236,14 +248,14 @@ public class Fragment2 extends Fragment {
                         }
 
                         default: {
-                            Toast.makeText(getActivity(), "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
                             break;
                         }
                     }
                     progressLay.setVisibility(View.GONE);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
                 progressLay.setVisibility(View.GONE);
@@ -257,7 +269,7 @@ public class Fragment2 extends Fragment {
     }
 
     private void dialogEdit(final String type) {
-        final Dialog dialog = new Dialog(getActivity());
+        final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
         dialog.setContentView(R.layout.dialog);
@@ -305,7 +317,7 @@ public class Fragment2 extends Fragment {
                     }
                     dialog.dismiss();
                 }else{
-                    Toast.makeText(getActivity(), "الرجاء ملء حقل التعديل", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "الرجاء ملء حقل التعديل", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -315,7 +327,7 @@ public class Fragment2 extends Fragment {
     }
 
     private void dialogDone(String msg) {
-        final Dialog dialog = new Dialog(getActivity());
+        final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialog_add_favorite);
@@ -347,18 +359,18 @@ public class Fragment2 extends Fragment {
         if (resultCode == RESULT_OK) {
             try {
                 final Uri imageUri = data.getData();
-                final InputStream imageStream = getActivity().getContentResolver().openInputStream(imageUri);
+                final InputStream imageStream = context.getContentResolver().openInputStream(imageUri);
                 final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
                 circleImageView.setImageBitmap(selectedImage);
                 editProfile("image",getStringFromImg(selectedImage));
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
             }
 
         } else {
-            Toast.makeText(getActivity(), "لم تقم باختيار صورة", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "لم تقم باختيار صورة", Toast.LENGTH_LONG).show();
 //            hasImage = false;
         }
     }
@@ -372,6 +384,11 @@ public class Fragment2 extends Fragment {
     }
 
 
-
+    Context context;
+    @Override
+    public void onAttach(@NonNull Context context) {
+        this.context = context;
+        super.onAttach(context);
+    }
 
 }

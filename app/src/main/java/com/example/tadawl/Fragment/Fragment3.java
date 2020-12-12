@@ -1,8 +1,11 @@
 package com.example.tadawl.Fragment;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
@@ -44,6 +47,13 @@ import static android.content.ContentValues.TAG;
 
 
 public class Fragment3 extends Fragment {
+
+    Context context;
+    @Override
+    public void onAttach(@NonNull Context context) {
+        this.context = context;
+        super.onAttach(context);
+    }
 
 
     public Fragment3() {
@@ -129,7 +139,7 @@ public class Fragment3 extends Fragment {
                         okhttp3.Request.Builder ongoing = chain.request().newBuilder();
                         ongoing.addHeader("Content-Type", "application/json;");
                         ongoing.addHeader("Content-Type", "application/x-www-form-urlencoded");
-                        String token = SharedPrefManager.getInstance(getActivity()).GetToken();
+                        String token = SharedPrefManager.getInstance(context).GetToken();
                         ongoing.addHeader("Authorization", token);
                         return chain.proceed(ongoing.build());
                     }
@@ -191,7 +201,7 @@ public class Fragment3 extends Fragment {
                         }
 
                         default: {
-                            Toast.makeText(getActivity(), "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
                             break;
                         }
                     }
@@ -201,7 +211,7 @@ public class Fragment3 extends Fragment {
                     isLoading = false;
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
 //                    showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
                     isLoading = false;
                 }
@@ -211,8 +221,8 @@ public class Fragment3 extends Fragment {
 
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
-//                Toast.makeText(getActivity(), "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
-                showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
+                Toast.makeText(context, "حدث خطأ الرجاء المحاولة مر اخرى", Toast.LENGTH_SHORT).show();
+//                showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
                 isLoading = false;
                 progressLay.setVisibility(View.GONE);
                 progressLayPage.setVisibility(View.GONE);

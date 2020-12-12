@@ -56,7 +56,7 @@
 <!--        </group>-->
         <group>
             <item
-                android:icon="@drawable/ic_about"
+                android:icon="@drawable/ic_headphones"
                 android:id="@+id/nav_menu_sc1"
                 android:title="الدعم"
                 />
@@ -65,10 +65,10 @@
                 android:id="@+id/nav_menu_sc2"
                 android:title="حول"
                 />
-            <item
-                android:icon="@drawable/ic_log_out"
-                android:title="خروج"
-                />
+<!--            <item-->
+<!--                android:icon="@drawable/ic_log_out"-->
+<!--                android:title="خروج"-->
+<!--                />-->
         </group>
     </group>
 </menu>

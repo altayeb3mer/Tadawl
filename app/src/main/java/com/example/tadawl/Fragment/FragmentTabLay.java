@@ -1,8 +1,11 @@
 package com.example.tadawl.Fragment;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,6 +59,13 @@ public class FragmentTabLay extends Fragment {
     LinearLayout progressLay;
     RelativeLayout container2;
     LinearLayoutManager linearLayoutManager;
+
+    Context context;
+    @Override
+    public void onAttach(@NonNull Context context) {
+        this.context = context;
+        super.onAttach(context);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -139,30 +149,30 @@ public class FragmentTabLay extends Fragment {
                             if (arrayList.size() > 0) {
                                 initAdapter(arrayList);
                             } else {
-                                Toast.makeText(getActivity(), "الرجاء المحاوله لاحقا", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "الرجاء المحاوله لاحقا", Toast.LENGTH_SHORT).show();
                             }
 
                             break;
                         }
 
                         default: {
-                            Toast.makeText(getActivity(), "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
                             break;
                         }
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
-//                    Toast.makeText(getActivity(), "خطأ في التحويل", Toast.LENGTH_SHORT).show();
-                    showSnackBar("حدث خطأ الرجاء المحاولة مر اخرى");
+                    Toast.makeText(context, "حدث خطأ الرجاء المحاولة مر اخرى", Toast.LENGTH_SHORT).show();
+//                    showSnackBar("حدث خطأ الرجاء المحاولة مر اخرى");
                 }
                 progressLay.setVisibility(View.GONE);
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
-//                Toast.makeText(getActivity(), "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
-                showSnackBar("حدث خطأ الرجاء المحاولة مر اخرى");
+                Toast.makeText(context, "حدث خطأ الرجاء المحاولة مر اخرى", Toast.LENGTH_SHORT).show();
+//                showSnackBar("حدث خطأ الرجاء المحاولة مر اخرى");
                 progressLay.setVisibility(View.GONE);
             }
         });
@@ -224,30 +234,30 @@ public class FragmentTabLay extends Fragment {
                             if (arrayList.size() > 0) {
                                 initAdapter(arrayList);
                             } else {
-                                Toast.makeText(getActivity(), "الرجاء المحاوله لاحقا", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "الرجاء المحاوله لاحقا", Toast.LENGTH_SHORT).show();
                             }
 
                             break;
                         }
 
                         default: {
-                            Toast.makeText(getActivity(), "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "حدث خطأ الرجاء المحاولة مرة اخرى", Toast.LENGTH_SHORT).show();
                             break;
                         }
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
-//                    Toast.makeText(getActivity(), "خطأ في التحويل", Toast.LENGTH_SHORT).show();
-                    showSnackBar("حدث خطأ الرجاء المحاولة مر اخرى");
+                    Toast.makeText(context, "حدث خطأ الرجاء المحاولة مر اخرى", Toast.LENGTH_SHORT).show();
+//                    showSnackBar("حدث خطأ الرجاء المحاولة مر اخرى");
                 }
                 progressLay.setVisibility(View.GONE);
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
-//                Toast.makeText(getActivity(), "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
-                showSnackBar("حدث خطأ الرجاء المحاولة مر اخرى");
+                Toast.makeText(context, "حدث خطأ الرجاء المحاولة مر اخرى", Toast.LENGTH_SHORT).show();
+//                showSnackBar("حدث خطأ الرجاء المحاولة مر اخرى");
                 progressLay.setVisibility(View.GONE);
             }
         });
