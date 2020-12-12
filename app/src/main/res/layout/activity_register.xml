@@ -7,12 +7,14 @@
     tools:context=".Activity.Login"
     android:background="@color/colorBackground"
     android:layoutDirection="rtl">
+
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_percent="0.2"
         android:orientation="horizontal"
         android:id="@+id/g1"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -69,6 +71,8 @@
                 android:gravity="center_vertical"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/txt_normal_size"
+                android:maxLines="1"
+                android:inputType="phone"
                 />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -90,6 +94,8 @@
                 android:gravity="center_vertical"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/txt_normal_size"
+                android:maxLines="1"
+                android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,7 +121,8 @@
                     android:gravity="center_vertical"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/txt_normal_size"
-                    android:inputType="textPassword"/>
+                    android:inputType="textPassword"
+                    android:maxLines="1"/>
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -140,7 +147,8 @@
                     android:gravity="center_vertical"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/txt_normal_size"
-                    android:inputType="textPassword"/>
+                    android:inputType="textPassword"
+                    android:maxLines="1"/>
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -201,6 +209,5 @@
             app:indicatorColor="@color/colorPrimary"
             app:indicatorName="LineSpinFadeLoaderIndicator" />
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

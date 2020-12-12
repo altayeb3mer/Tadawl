@@ -191,7 +191,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         return false;
     }
 
-
     TextWatcher usernameWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -208,7 +207,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
             String check = s.toString();
 
-            if (check.length() < 6|| check.length() > 20||isValidUser(check)) {
+            if (check.length() < 6|| check.length() > 20) {
                 editTextName.setError("مسموح من 6 الى 20 حرف");
                 name = "";
             }else{

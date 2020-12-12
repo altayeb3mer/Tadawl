@@ -222,14 +222,14 @@
                 <RelativeLayout
                     android:layout_width="120dp"
                     android:layout_height="120dp"
+                    android:background="@drawable/shape_profile_bg"
                     android:layout_centerHorizontal="true">
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/imgProfile"
-                        android:background="@drawable/shape_profile_bg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/car1"
-                        android:padding="8dp"/>
+                        android:src="@drawable/ic_person"
+                        android:layout_margin="8dp"/>
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"

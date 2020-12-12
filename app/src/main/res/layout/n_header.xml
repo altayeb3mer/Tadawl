@@ -28,7 +28,7 @@
                 app:civ_border_width="1dp"
                 app:civ_border_color="@android:color/white"
                 android:scaleType="centerCrop"
-                android:src="@drawable/abc_vector_test"
+                android:src="@drawable/ic_logo"
                 app:civ_border_overlay="true"
                 />
 
