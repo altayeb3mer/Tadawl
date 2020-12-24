@@ -9,8 +9,10 @@ import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
 
 public class Api {
-    public static String ROOT_URL = "http://maqsood.com.sd/tadawol/public/";
+//    public static String ROOT_URL = "http://maqsood.com.sd/tadawol/public/";
+    public static String ROOT_URL = "http://tadaawol.com/admin/";
 
+    //: http://tadaawol.com/admin/
 
     //registration
     public interface RetrofitRegister {

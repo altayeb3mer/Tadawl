@@ -1,6 +1,5 @@
 package com.example.tadawl.Fragment;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +10,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +25,6 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import com.example.tadawl.Activity.PostDetails;
 import com.example.tadawl.R;
 import com.example.tadawl.Utils.Api;
 import com.example.tadawl.Utils.SharedPrefManager;
@@ -361,9 +358,9 @@ public class Fragment2 extends Fragment {
                 final Uri imageUri = data.getData();
                 final InputStream imageStream = context.getContentResolver().openInputStream(imageUri);
                 Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                selectedImage = Bitmap.createScaledBitmap(selectedImage, 500, 500, false);
-                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                selectedImage.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+
+                selectedImage = getResizedBitmap(selectedImage,400);
+
 
 
                 circleImageView.setImageBitmap(selectedImage);
@@ -388,12 +385,26 @@ public class Fragment2 extends Fragment {
         return baseString;
     }
 
-
     Context context;
     @Override
     public void onAttach(@NonNull Context context) {
         this.context = context;
         super.onAttach(context);
+    }
+
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
 }

@@ -801,7 +801,10 @@ public class FragmentAddCar extends Fragment {
                 hasImage = true;
                 final Uri imageUri = data.getData();
                 final InputStream imageStream = getActivity().getContentResolver().openInputStream(imageUri);
-                final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+
+                selectedImage = getResizedBitmap(selectedImage,400);
+
                 switch (imgNo) {
                     case "1": {
 //                        Glide.with(getActivity()).load(selectedImage).into(imageView1);
@@ -858,5 +861,22 @@ public class FragmentAddCar extends Fragment {
         byte[] byteArray = byteStream.toByteArray();
         String baseString = Base64.encodeToString(byteArray, Base64.DEFAULT);
         return baseString;
+    }
+
+
+
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
     }
 }

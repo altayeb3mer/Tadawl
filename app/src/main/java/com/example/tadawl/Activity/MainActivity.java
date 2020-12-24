@@ -99,12 +99,14 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
             }
             //nav menu
             case R.id.nav_menu_sc1:{
-                startActivity(new Intent(getApplicationContext(),Login.class));
+//                startActivity(new Intent(getApplicationContext(),Login.class));
+                Toast.makeText(this, "لاحقا", Toast.LENGTH_SHORT).show();
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
             case R.id.nav_menu_sc2:{
-                startActivity(new Intent(getApplicationContext(),Register.class));
+//                startActivity(new Intent(getApplicationContext(),Register.class));
+                Toast.makeText(this, "لاحـقا", Toast.LENGTH_SHORT).show();
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }

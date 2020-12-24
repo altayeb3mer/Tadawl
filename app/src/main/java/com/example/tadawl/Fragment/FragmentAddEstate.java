@@ -704,9 +704,7 @@ public class FragmentAddEstate extends Fragment {
                 final InputStream imageStream = getActivity().getContentResolver().openInputStream(imageUri);
                 Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
 
-                selectedImage = Bitmap.createScaledBitmap(selectedImage, 500, 500, false);
-                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                selectedImage.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+                selectedImage = getResizedBitmap(selectedImage,400);
 
 
                 switch (imgNo) {
@@ -765,6 +763,22 @@ public class FragmentAddEstate extends Fragment {
         byte[] byteArray = byteStream.toByteArray();
         String baseString = Base64.encodeToString(byteArray, Base64.DEFAULT);
         return baseString;
+    }
+
+
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
 }

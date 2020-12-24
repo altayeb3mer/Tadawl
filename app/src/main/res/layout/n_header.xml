@@ -38,15 +38,16 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="تداول"
+                android:text="تــداول"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
+
                 />
             <TextView
-                android:textSize="24sp"
+                android:textSize="22sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tadawl"
+                android:text="Tadaawol"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
                 />
