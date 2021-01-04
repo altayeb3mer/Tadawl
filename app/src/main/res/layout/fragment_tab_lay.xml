@@ -17,7 +17,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <androidx.recyclerview.widget.RecyclerView
-                android:layoutDirection="rtl"
                 android:visibility="visible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -25,6 +24,7 @@
                 app:spanCount="1"
                 tools:itemCount="2"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:reverseLayout="true"
                 android:orientation="horizontal"
                 tools:listitem="@layout/tab_rec_item"/>
             <TextView

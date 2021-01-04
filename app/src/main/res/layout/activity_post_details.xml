@@ -256,6 +256,333 @@
                                 android:textSize="@dimen/txt_normal_size"
                                 />
 
+                            <TableLayout
+                                android:visibility="gone"
+                                android:id="@+id/tableEstate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TableRow android:weightSum="1">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtState"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="الولاية الخرطوم"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtCity"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="المدينة الخرطوم"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                </TableRow>
+                                <TableRow android:weightSum="1">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtType"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="النوع"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtCat"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="التصنيف"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                </TableRow>
+                                <TableRow android:weightSum="1">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtNoRoom"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="عدد الغرف"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtNeighborhood"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="اسم الحي"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                </TableRow>
+                                <TableRow android:weightSum="1">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtArea"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="المساحة"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtDate"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="تاريخ الاعلان"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                </TableRow>
+
+
+
+                            </TableLayout>
+                            <TableLayout
+                                android:visibility="gone"
+                                android:id="@+id/tableCar"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TableRow android:weightSum="1">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtState2"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="الولاية الخرطوم"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtCity2"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="المدينة الخرطوم"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                </TableRow>
+                                <TableRow android:weightSum="1">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtType2"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="النوع"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtCompany"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="الشركة المصنعة"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                </TableRow>
+                                <TableRow android:weightSum="1">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtTransmission"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="نوع القيادة"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtIs_new"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="الحالة"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                </TableRow>
+                                <TableRow android:weightSum="1">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtModel"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="الموديل"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtYear"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="سنة الصنع"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                </TableRow>
+                                <TableRow android:weightSum="1">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtColor"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="الللون"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:orientation="horizontal"
+                                        android:layout_weight="0.5">
+                                        <TextView
+                                            android:textSize="@dimen/txt_small_size"
+                                            android:id="@+id/txtDate2"
+                                            android:textColor="@color/newAdsTitleColor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="تاريخ الاعلان"
+                                            android:gravity="center_vertical"
+                                            android:layout_marginRight="@dimen/margin_normal_size"
+                                            android:layout_marginLeft="@dimen/margin_normal_size"/>
+                                    </LinearLayout>
+                                </TableRow>
+
+
+
+                            </TableLayout>
+
                             <TextView
                                 android:visibility="gone"
                                 app:layout_constraintTop_toTopOf="parent"
@@ -416,10 +743,6 @@
                                     android:text="الموديل"
                                     android:gravity="center_vertical"/>
                             </LinearLayout>
-
-
-
-
 
                         </LinearLayout>
                     </LinearLayout>

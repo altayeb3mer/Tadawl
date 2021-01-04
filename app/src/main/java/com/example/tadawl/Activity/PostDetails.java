@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,6 +63,10 @@ public class PostDetails extends AppCompatActivity {
     TextView price, title, views, rating, description;
     String phone = "";
 
+    TextView txtState,txtCity,txtType,txtCat,txtNoRoom,txtNeighborhood,txtArea,txtDate;
+    TextView txtState2,txtCity2,txtType2,txtCompany,txtTransmission,txtIs_new,txtModel,txtYear,txtColor,txtDate2;
+    TableLayout tableCar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +97,28 @@ public class PostDetails extends AppCompatActivity {
     }
 
     private void init() {
+        txtState = findViewById(R.id.txtState);
+        txtCity = findViewById(R.id.txtCity);
+        txtType = findViewById(R.id.txtType);
+        txtCat = findViewById(R.id.txtCat);
+        txtNoRoom = findViewById(R.id.txtNoRoom);
+        txtNeighborhood = findViewById(R.id.txtNeighborhood);
+        txtArea = findViewById(R.id.txtArea);
+        txtDate = findViewById(R.id.txtDate);
+        tableEstate = findViewById(R.id.tableEstate);
+
+        txtState2 = findViewById(R.id.txtState2);
+        txtCity2 = findViewById(R.id.txtCity2);
+        txtType2 = findViewById(R.id.txtType2);
+        txtCompany = findViewById(R.id.txtCompany);
+        txtTransmission = findViewById(R.id.txtTransmission);
+        txtIs_new = findViewById(R.id.txtIs_new);
+        txtModel = findViewById(R.id.txtModel);
+        txtYear = findViewById(R.id.txtYear);
+        txtColor = findViewById(R.id.txtColor);
+        txtDate2 = findViewById(R.id.txtDate2);
+        tableCar = findViewById(R.id.tableCar);
+
         layBack = findViewById(R.id.layBack);
         layBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -440,17 +468,36 @@ public class PostDetails extends AppCompatActivity {
                             title.setText(data.getString("title"));
                             views.setText(data.getString("views"));
                             rating.setText(data.getString("rating"));
-                            description.setText(data.getString("description"));
-                            description.append("\n \nالولاية" + " : " + data.getString("state") + "\n");
-                            description.append("المدينة" + " : " + data.getString("city") + "\n");
-                            description.append("النوع" + " : " + data.getString("ad_type") + "\n");
-                            description.append("الشركة المصنعة" + " : " + data.getString("company") + "\n");
-                            description.append("نوع القيادة" + " : " + data.getString("transmission") + "\n");
-                            description.append("الحالة" + " : " + data.getString("is_new") + "\n");
-                            description.append("الموديل" + " : " + data.getString("model") + "\n");
-                            description.append("سنة الصنع" + " : " + data.getString("year") + "\n");
-                            description.append("اللون" + " : " + data.getString("color") + "\n");
-                            description.append("تاريخ الاعلان" + " : " + data.getString("created_at") + "\n");
+                            String desc = data.getString("description");
+                            if (!desc.equals("")&&!desc.equals("null")){
+                                description.setText(data.getString("description"));
+                            }else {
+                                description.setVisibility(View.GONE);
+                            }
+
+                            //tableEstate
+                            tableCar.setVisibility(View.VISIBLE);
+                            txtState2.setText(Html.fromHtml("<span style='color:#808080'>الولاية </span>"+data.getString("state")));
+                            txtCity2.setText(Html.fromHtml("<span style='color:#808080'>المدينة </span>"+data.getString("city")));
+                            txtType2.setText(Html.fromHtml("<span style='color:#808080'>النوع </span>"+data.getString("ad_type")));
+                            txtCompany.setText(Html.fromHtml("<span style='color:#808080'>الشركة المصنعة </span>"+data.getString("company")));
+                            txtTransmission.setText(Html.fromHtml("<span style='color:#808080'>نوع القيادة </span>"+data.getString("transmission")));
+                            txtIs_new.setText(Html.fromHtml("<span style='color:#808080'>الحالة </span>"+data.getString("is_new")));
+                            txtModel.setText(Html.fromHtml("<span style='color:#808080'>الموديل </span>"+data.getString("model")));
+                            txtYear.setText(Html.fromHtml("<span style='color:#808080'>سنة الصنع </span>"+data.getString("year")));
+                            txtColor.setText(Html.fromHtml("<span style='color:#808080'>اللون </span>"+data.getString("color")));
+                            txtDate2.setText(Html.fromHtml("<span style='color:#808080'>تاريخ الاعلان </span>"+data.getString("created_at")));
+
+//                            description.append("\n \nالولاية" + " : " + data.getString("state") + "\n");
+//                            description.append("المدينة" + " : " + data.getString("city") + "\n");
+//                            description.append("النوع" + " : " + data.getString("ad_type") + "\n");
+//                            description.append("الشركة المصنعة" + " : " + data.getString("company") + "\n");
+//                            description.append("نوع القيادة" + " : " + data.getString("transmission") + "\n");
+//                            description.append("الحالة" + " : " + data.getString("is_new") + "\n");
+//                            description.append("الموديل" + " : " + data.getString("model") + "\n");
+//                            description.append("سنة الصنع" + " : " + data.getString("year") + "\n");
+//                            description.append("اللون" + " : " + data.getString("color") + "\n");
+//                            description.append("تاريخ الاعلان" + " : " + data.getString("created_at") + "\n");
 
 
                             phone = data.getString("owner_phone");
@@ -565,18 +612,36 @@ public class PostDetails extends AppCompatActivity {
                             title.setText(data.getString("title"));
                             views.setText(data.getString("views"));
                             rating.setText(data.getString("rating"));
-                            description.setText(data.getString("description"));
-                            description.append("\n \nالولاية" + " : " + data.getString("state") + "\n");
-                            description.append("المدينة" + " : " + data.getString("city") + "\n");
-                            description.append("النوع" + " : " + data.getString("ad_type") + "\n");
-                            description.append("التصنيف" + " : " + data.getString("category") + "\n");
-                            description.append("عدد الغرف" + " : " + data.getString("number_of_rooms") + "\n");
-                            description.append("اسم الحي" + " : " + data.getString("neighborhood") + "\n");
-                            description.append("المساحة" + " : " + data.getString("area") + "\n");
-//                            description.append("الموديل"+" : "+data.getString("model")+"\n");
-//                            description.append("سنة الصنع"+" : "+data.getString("year")+"\n");
-//                            description.append("اللون"+" : "+data.getString("color")+"\n");
-                            description.append("تاريخ الاعلان" + " : " + data.getString("created_at") + "\n");
+                            String desc = data.getString("description");
+                            if (!desc.equals("")&&!desc.equals("null")){
+                                description.setText(data.getString("description"));
+                            }else {
+                                description.setVisibility(View.GONE);
+                            }
+
+                            //tableEstate
+                            tableEstate.setVisibility(View.VISIBLE);
+                            txtState.setText(Html.fromHtml("<span style='color:#808080'>الولاية </span>"+data.getString("state")));
+                            txtCity.setText(Html.fromHtml("<span style='color:#808080'>المدينة </span>"+data.getString("city")));
+                            txtType.setText(Html.fromHtml("<span style='color:#808080'>النوع </span>"+data.getString("ad_type")));
+                            txtCat.setText(Html.fromHtml("<span style='color:#808080'>التصنيف </span>"+data.getString("category")));
+                            txtNoRoom.setText(Html.fromHtml("<span style='color:#808080'>عدد الغرف </span>"+data.getString("number_of_rooms")));
+                            txtNeighborhood.setText(Html.fromHtml("<span style='color:#808080'>اسم الحي </span>"+data.getString("neighborhood")));
+                            txtArea.setText(Html.fromHtml("<span style='color:#808080'>المساحة </span>"+data.getString("area")));
+                            txtDate.setText(Html.fromHtml("<span style='color:#808080'>تاريخ الاعلان </span>"+data.getString("created_at")));
+
+
+//                            description.append("\n \nالولاية" + " : " + data.getString("state") + "\n");
+//                            description.append("المدينة" + " : " + data.getString("city") + "\n");
+//                            description.append("النوع" + " : " + data.getString("ad_type") + "\n");
+//                            description.append("التصنيف" + " : " + data.getString("category") + "\n");
+//                            description.append("عدد الغرف" + " : " + data.getString("number_of_rooms") + "\n");
+//                            description.append("اسم الحي" + " : " + data.getString("neighborhood") + "\n");
+//                            description.append("المساحة" + " : " + data.getString("area") + "\n");
+////                            description.append("الموديل"+" : "+data.getString("model")+"\n");
+////                            description.append("سنة الصنع"+" : "+data.getString("year")+"\n");
+////                            description.append("اللون"+" : "+data.getString("color")+"\n");
+//                            description.append("تاريخ الاعلان" + " : " + data.getString("created_at") + "\n");
 
                             phone = data.getString("owner_phone");
 
@@ -613,6 +678,7 @@ public class PostDetails extends AppCompatActivity {
             }
         });
     }
+    TableLayout tableEstate;
     boolean is_favourite=false;
     private void addToFavorite() {
         progressLay.setVisibility(View.VISIBLE);

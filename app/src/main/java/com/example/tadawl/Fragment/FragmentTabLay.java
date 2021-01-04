@@ -296,7 +296,7 @@ public class FragmentTabLay extends Fragment {
     private void initAdapter(ArrayList<ModelAds> arrayList){
         recyclerView = view.findViewById(R.id.recycler);
 //        recyclerView.setNestedScrollingEnabled(false);
-        linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
+        linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 //        for (int i = 0; i < 10; i++) {
 //            ModelAds modelAds= new ModelAds();
