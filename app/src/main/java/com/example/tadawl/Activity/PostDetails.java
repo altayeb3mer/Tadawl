@@ -499,7 +499,6 @@ public class PostDetails extends AppCompatActivity {
 //                            description.append("اللون" + " : " + data.getString("color") + "\n");
 //                            description.append("تاريخ الاعلان" + " : " + data.getString("created_at") + "\n");
 
-
                             phone = data.getString("owner_phone");
 
                             is_favourite = data.getBoolean("is_favourite");
