@@ -123,6 +123,11 @@ public class Api {
         @POST("api/edit-profile")
         Call<String> putParam(@Body HashMap<String, String> params);
     }
+    //delete ads
+    public interface RetrofitDeletePost {
+        @POST("api/delete-ad")
+        Call<String> putParam(@Body HashMap<String, String> params);
+    }
 
 
 }

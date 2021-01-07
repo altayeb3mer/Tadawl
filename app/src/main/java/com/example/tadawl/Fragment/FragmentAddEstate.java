@@ -205,8 +205,8 @@ public class FragmentAddEstate extends Fragment {
                         return chain.proceed(ongoing.build());
                     }
                 })
-                .readTimeout(60, TimeUnit.SECONDS)
-                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS)
+                .connectTimeout(10, TimeUnit.SECONDS)
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()

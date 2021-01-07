@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tadawl.Adapter.AdapterNewAds;
+import com.example.tadawl.Adapter.AdapterNewAdsDel;
 import com.example.tadawl.Model.ModelNewAds;
 import com.example.tadawl.R;
 import com.example.tadawl.Utils.Api;
@@ -62,9 +63,10 @@ public class Fragment3 extends Fragment {
 
     View view;
     RecyclerView recycler;
-    AdapterNewAds adapterNewAds;
+    AdapterNewAdsDel adapterNewAds;
     ArrayList<ModelNewAds> arrayList;
     GridLayoutManager gridLayoutManager;
+
     LinearLayout layBack, progressLay, progressLayPage,layNoData;
     String type = "";
     TextView title;
@@ -231,7 +233,7 @@ public class Fragment3 extends Fragment {
     }
 
     private void initAdapter(ArrayList<ModelNewAds> array) {
-        adapterNewAds = new AdapterNewAds(getActivity(), array);
+        adapterNewAds = new AdapterNewAdsDel( getActivity(), array,progressLay);
         recycler.setAdapter(adapterNewAds);
         recycler.smoothScrollToPosition(arrayList.size() - Integer.parseInt(perPage));
 

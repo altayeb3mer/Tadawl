@@ -3,12 +3,10 @@ package com.example.tadawl.Adapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,13 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.tadawl.Activity.PostDetails;
-import com.example.tadawl.Model.ModelAds;
 import com.example.tadawl.Model.ModelNewAds;
 import com.example.tadawl.R;
 import com.example.tadawl.Utils.Api;
 import com.example.tadawl.Utils.SharedPrefManager;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -39,7 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 
-public class AdapterNewAds extends RecyclerView.Adapter<AdapterNewAds.ViewHolder> {
+public class AdapterNewAdsDel extends RecyclerView.Adapter<AdapterNewAdsDel.ViewHolder> {
 
 //    Typeface tf;
     int current_page, last_page;
@@ -48,15 +44,19 @@ public class AdapterNewAds extends RecyclerView.Adapter<AdapterNewAds.ViewHolder
     private ItemClickListener mClickListener;
     private Activity activity;
 //    RelativeLayout container;
-    public AdapterNewAds(Activity activity, ArrayList<ModelNewAds> r) {
+    LinearLayout progressLay;
+    public AdapterNewAdsDel(Activity activity, ArrayList<ModelNewAds> r,LinearLayout progressLay) {
         this.mInflater = LayoutInflater.from(activity);
         this.arrayList = r;
         this.activity = activity;
+        this.progressLay = progressLay;
+
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.new_adds_rec_item, parent, false);
+        View view = mInflater.inflate(R.layout.new_adds_rec_item_del, parent, false);
 
         return new ViewHolder(view);
     }
@@ -135,8 +135,9 @@ public class AdapterNewAds extends RecyclerView.Adapter<AdapterNewAds.ViewHolder
     }
 
 
-    private void deleteAds(String type, String id, final int position) {
 
+    private void deleteAds(String type, String id, final int position) {
+        progressLay.setVisibility(View.VISIBLE);
         OkHttpClient httpClient = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
                     @Override
@@ -185,27 +186,21 @@ public class AdapterNewAds extends RecyclerView.Adapter<AdapterNewAds.ViewHolder
                         }
                     }
 
+                    progressLay.setVisibility(View.GONE);
                 } catch (Exception e) {
                     e.printStackTrace();
-//                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
-////                    showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
-//                    isLoading = false;
+                    progressLay.setVisibility(View.GONE);
                 }
-//                progressLay.setVisibility(View.GONE);
-//                progressLayPage.setVisibility(View.GONE);
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
                 Toast.makeText(activity, "حدث خطأ الرجاء المحاولة مر اخرى", Toast.LENGTH_SHORT).show();
-////                showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
-//                isLoading = false;
-//                progressLay.setVisibility(View.GONE);
-//                progressLayPage.setVisibility(View.GONE);
+
+                progressLay.setVisibility(View.GONE);
             }
         });
     }
-
 
 
 }
