@@ -38,65 +38,35 @@
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="تسجیل الدخول"
+            android:text="تأكيد رقم الهاتف"
             android:textSize="30sp"
             android:textColor="@color/colorPrimary"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="اكتب رقم هاتفك، سنقوم بارسال رسالة تأكيدية اليك"/>
+            android:text="تم ارسال كود الى رقم هاتفك الذي قمت بادخاله ، قم بادخال\nالكود في الاسفل للمتابعة"/>
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:padding="@dimen/margin_small_size"
+        <com.goodiebag.pinview.Pinview
+            app:textSize="12sp"
+            android:id="@+id/pinview"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/shape_edt_bg"
-            android:layout_marginTop="@dimen/margin_normal_size">
-            <com.google.android.material.textfield.TextInputEditText
-                android:inputType="phone"
-                android:background="@android:color/transparent"
-                android:id="@+id/phone"
-                android:layout_marginLeft="@dimen/margin_small_size"
-                android:layout_marginRight="@dimen/margin_small_size"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="رقم الهاتف"
-                android:gravity="center_vertical"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/txt_normal_size"
-                android:maxLines="1"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/shape_edt_bg"
-            android:layout_marginTop="@dimen/margin_normal_size"
-            app:passwordToggleEnabled="true"
-            android:padding="@dimen/margin_small_size">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password"
-                    android:background="@android:color/transparent"
-                    android:layout_marginLeft="@dimen/margin_small_size"
-                    android:layout_marginRight="@dimen/margin_small_size"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="كلمة السر"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/txt_normal_size"
-                    android:inputType="textPassword"
-                    android:drawableRight="@drawable/ic_pass"/>
+            app:pinWidth="40dp"
+            app:pinHeight="40dp"
+            app:pinLength="4"
+            app:cursorVisible="true"
+            app:forceKeyboard="true"
+            app:inputType="number"
+            app:password="false"
+            android:layoutDirection="ltr"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn"
             android:layout_width="130dp"
             android:layout_height="50dp"
-            android:text="دخـــــول"
+            android:text="تأكيد"
             android:layout_marginTop="@dimen/margin_large_size"
             android:background="@drawable/shape_btn_bg"
             android:textColor="@android:color/white"

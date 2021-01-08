@@ -35,7 +35,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
 
-    TextInputEditText editTextPhone, editTextName, editTextPass, editTextConfirmPass;
+    TextInputEditText editTextPhone, editTextName;
     TextView textViewLogin;
     AppCompatButton button;
     String phone="", name="", password="", c_password="";
@@ -44,8 +44,13 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        Bundle args = getIntent().getExtras();
+        if (args!=null){
+            phone = args.getString("phone");
+        }
         init();
-
+        editTextPhone.setText(phone);
+        editTextPhone.setEnabled(false);
     }
 
     private void init() {
@@ -54,10 +59,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         editTextPhone.addTextChangedListener(phoneWatcher);
         editTextName = findViewById(R.id.name);
         editTextName.addTextChangedListener(usernameWatcher);
-        editTextPass = findViewById(R.id.password);
-        editTextPass.addTextChangedListener(passWatcher);
-        editTextConfirmPass = findViewById(R.id.c_password);
-        editTextConfirmPass.addTextChangedListener(confirmPassWatcher);
+//        editTextPass = findViewById(R.id.password);
+//        editTextPass.addTextChangedListener(passWatcher);
+//        editTextConfirmPass = findViewById(R.id.c_password);
+//        editTextConfirmPass.addTextChangedListener(confirmPassWatcher);
 
         textViewLogin = findViewById(R.id.txtLogin);
         textViewLogin.setOnClickListener(this);
@@ -85,7 +90,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void preRegister() {
-        if (!phone.equals("")&&!name.equals("")&&!password.equals("")&&!c_password.equals("")){
+        if (!phone.equals("")&&!name.equals("")){
             Registration();
         }else{
             Toast.makeText(this, "الرجاء كتابة بيانات صحيحة", Toast.LENGTH_SHORT).show();
@@ -122,8 +127,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             HashMap<String, String> hashBody = new HashMap<>();
             hashBody.put("name",name);
             hashBody.put("phone",phone);
-            hashBody.put("password",password);
-            hashBody.put("c_password",c_password);
+//            hashBody.put("password",password);
+//            hashBody.put("c_password",c_password);
 
             Call<String> call = service.putParam(hashBody);
             call.enqueue(new Callback<String>() {
@@ -242,52 +247,52 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         }
 
     };
-    TextWatcher passWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            //none
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            //none
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-            String check = s.toString();
-
-            if (check.length() < 8 || check.length() > 20) {
-                editTextPass.setError("مسموح من 8 الى 20 خانة");
-                password = "";
-            }else {
-                password = check;
-            }
-        }
-
-    };
-    TextWatcher confirmPassWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            //none
-        }
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            //none
-        }
-        @Override
-        public void afterTextChanged(Editable s) {
-            String check = s.toString();
-            if (!check.equals(editTextPass.getText().toString())) {
-                editTextConfirmPass.setError("كلمة السر غير متطابقة");
-                c_password = "";
-            }else {
-                c_password = check;
-            }
-        }
-
-    };
+//    TextWatcher passWatcher = new TextWatcher() {
+//        @Override
+//        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            //none
+//        }
+//
+//        @Override
+//        public void onTextChanged(CharSequence s, int start, int before, int count) {
+//            //none
+//        }
+//
+//        @Override
+//        public void afterTextChanged(Editable s) {
+//
+//            String check = s.toString();
+//
+//            if (check.length() < 8 || check.length() > 20) {
+//                editTextPass.setError("مسموح من 8 الى 20 خانة");
+//                password = "";
+//            }else {
+//                password = check;
+//            }
+//        }
+//
+//    };
+//    TextWatcher confirmPassWatcher = new TextWatcher() {
+//        @Override
+//        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            //none
+//        }
+//        @Override
+//        public void onTextChanged(CharSequence s, int start, int before, int count) {
+//            //none
+//        }
+//        @Override
+//        public void afterTextChanged(Editable s) {
+//            String check = s.toString();
+//            if (!check.equals(editTextPass.getText().toString())) {
+//                editTextConfirmPass.setError("كلمة السر غير متطابقة");
+//                c_password = "";
+//            }else {
+//                c_password = check;
+//            }
+//        }
+//
+//    };
 
 
 

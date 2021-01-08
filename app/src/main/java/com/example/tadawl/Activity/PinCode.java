@@ -1,21 +1,19 @@
 package com.example.tadawl.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tadawl.R;
 import com.example.tadawl.Utils.Api;
-import com.example.tadawl.Utils.SharedPrefManager;
-import com.google.android.material.textfield.TextInputEditText;
+import com.goodiebag.pinview.Pinview;
 
 import org.json.JSONObject;
 
@@ -31,92 +29,38 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-public class Login extends AppCompatActivity  implements View.OnClickListener {
-    TextInputEditText editTextPhone;
-    TextView textViewRegister;
+public class PinCode extends AppCompatActivity {
     AppCompatButton button;
-    String phone="",password;
+    Pinview pinview;
+    String otp="",phone="";
     LinearLayout progressLay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_pin_code);
+        Bundle args = getIntent().getExtras();
+        if (args!=null){
+            phone = args.getString("phone");
+        }
         init();
-    }
-
-    private void init() {
-//        editTextPass = findViewById(R.id.password);
-        textViewRegister = findViewById(R.id.txtRegister);
-        textViewRegister.setOnClickListener(this);
-        progressLay = findViewById(R.id.progressLay);
-        editTextPhone = findViewById(R.id.phone);
-        editTextPhone.addTextChangedListener(phoneWatcher);
-
-
-
-
-        button = findViewById(R.id.btn);
-        button.setOnClickListener(this);
-    }
-
-    private boolean isValidMobile(String phone) {
-        if (phone.length()==10){
-            return android.util.Patterns.PHONE.matcher(phone).matches();
-        }
-        return false;
-    }
-    TextWatcher phoneWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            //none
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            //none
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-            String check = s.toString();
-
-            if (!isValidMobile(check)){
-                editTextPhone.setError("رقم هاتف غير مقبول (مسموح بـ 10 ارقام)");
-                phone = "";
-            }else{
-                phone = check;
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                preCheck();
             }
-
-        }
-
-    };
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.txtRegister:{
-                startActivity(new Intent(getApplicationContext(),Register.class));
-                finish();
-                break;
-            }
-            case R.id.btn:{
-                preLogin();
-                break;
-            }
-
-        }
+        });
     }
 
-    private void preLogin() {
-//        password = editTextPass.getText().toString();
-        if (!phone.equals("")){
-            LoginFun();
+    private void preCheck(){
+        if (!otp.equals("")){
+            checkOtp();
         }else{
-            Toast.makeText(this, "الرجاء كتابة بيانات صحيحة", Toast.LENGTH_SHORT).show();
+            dialogMsg("مدخلات خاطئة","الرجاء كتابة رمز التحقق (4 ارقام)");
         }
     }
 
-    private void LoginFun() {
+
+    private void checkOtp() {
         progressLay.setVisibility(View.VISIBLE);
         OkHttpClient httpClient = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
@@ -140,11 +84,11 @@ public class Login extends AppCompatActivity  implements View.OnClickListener {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        Api.RetrofitSendOtp service = retrofit.create(Api.RetrofitSendOtp.class);
+        Api.RetrofitCheckOtp service = retrofit.create(Api.RetrofitCheckOtp.class);
 
         HashMap<String, String> hashBody = new HashMap<>();
         hashBody.put("phone",phone);
-//        hashBody.put("password",password);
+        hashBody.put("otp",otp);
 
         Call<String> call = service.putParam(hashBody);
         call.enqueue(new Callback<String>() {
@@ -156,17 +100,25 @@ public class Login extends AppCompatActivity  implements View.OnClickListener {
                     JSONObject objectData=new JSONObject(object.getString("data"));
                     switch (statusCode){
                         case "200":{
-//                            String token = objectData.getString("token");
-//
-//                            SharedPrefManager.getInstance(getApplicationContext()).storeToken(token);
-                            Intent intent =new Intent(Login.this,PinCode.class);
-                            intent.putExtra("phone",phone);
+                            boolean otpValue = objectData.getBoolean("is_otp_correct");
+                            if (otpValue){
+                                boolean registerBefore = objectData.getBoolean("is_phone_registered");
+                                if (registerBefore){
+                                    startActivity(new Intent(PinCode.this,MainActivity.class));
+                                }else{
+                                    Intent intent =new Intent(PinCode.this,Register.class);
+                                    intent.putExtra("phone",phone);
+                                    startActivity(intent);
+                                }
+                                finish();
+                            }else{
+                                dialogMsg("الرمز خطأ","رمز التحقق خاطئ ، الرجاء المحاولة مرة اخرى!");
+                            }
 
-                            startActivity(intent);
-                            String msg = objectData.getString("message");
-                            Toast.makeText(Login.this, ""+msg, Toast.LENGTH_SHORT).show();
+//                            String msg = objectData.getString("message");
+//                            Toast.makeText(PinCode.this, ""+msg, Toast.LENGTH_SHORT).show();
 
-                            finish();
+
                             break;
                         }
 //                        case "401":{
@@ -175,24 +127,53 @@ public class Login extends AppCompatActivity  implements View.OnClickListener {
 //                        }
                         default:{
                             String msg = objectData.getString("message");
-                            Toast.makeText(Login.this, ""+msg, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PinCode.this, ""+msg, Toast.LENGTH_SHORT).show();
                             break;
                         }
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(Login.this, "خطأ في التحويل", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PinCode.this, "خطأ في التحويل", Toast.LENGTH_SHORT).show();
                 }
                 progressLay.setVisibility(View.GONE);
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
-                Toast.makeText(Login.this, "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PinCode.this, "خطأ في تسجيل الدخول، ربما البيانات غير صحيحة", Toast.LENGTH_SHORT).show();
                 progressLay.setVisibility(View.GONE);
             }
         });
     }
+
+    private void init() {
+        progressLay = findViewById(R.id.progressLay);
+        button = findViewById(R.id.btn);
+        pinview = findViewById(R.id.pinview);
+        pinview.setPinViewEventListener(new Pinview.PinViewEventListener() {
+            @Override
+            public void onDataEntered(Pinview pinview, boolean fromUser) {
+                    otp = pinview.getValue().trim();
+
+            }
+        });
+    }
+
+
+
+    private void dialogMsg(String title,String msg){
+        AlertDialog alertDialog = new AlertDialog.Builder(PinCode.this).create();
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(msg);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "موافق",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+    }
+
 
 }

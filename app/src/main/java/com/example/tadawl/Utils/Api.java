@@ -128,6 +128,16 @@ public class Api {
         @POST("api/delete-ad")
         Call<String> putParam(@Body HashMap<String, String> params);
     }
+    //send otp
+    public interface RetrofitSendOtp {
+        @POST("api/send-otp")
+        Call<String> putParam(@Body HashMap<String, String> params);
+    }
+    //check otp
+    public interface RetrofitCheckOtp {
+        @POST("api/check-otp")
+        Call<String> putParam(@Body HashMap<String, String> params);
+    }
 
 
 }
