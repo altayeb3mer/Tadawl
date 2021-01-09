@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.tadawl.R;
 import com.example.tadawl.Utils.Api;
+import com.example.tadawl.Utils.SharedPrefManager;
 import com.goodiebag.pinview.Pinview;
 
 import org.json.JSONObject;
@@ -105,6 +106,8 @@ public class PinCode extends AppCompatActivity {
                                 boolean registerBefore = objectData.getBoolean("is_phone_registered");
                                 if (registerBefore){
                                     startActivity(new Intent(PinCode.this,MainActivity.class));
+                                    String token = objectData.getString("token");
+                                    SharedPrefManager.getInstance(getApplicationContext()).storeToken(token);
                                 }else{
                                     Intent intent =new Intent(PinCode.this,Register.class);
                                     intent.putExtra("phone",phone);

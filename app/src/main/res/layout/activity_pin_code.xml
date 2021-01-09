@@ -59,7 +59,8 @@
             app:forceKeyboard="true"
             app:inputType="number"
             app:password="false"
-            android:layoutDirection="ltr"/>
+            android:layoutDirection="ltr"
+            app:splitWidth="10dp"/>
 
 
         <androidx.appcompat.widget.AppCompatButton

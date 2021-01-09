@@ -156,9 +156,6 @@ public class Login extends AppCompatActivity  implements View.OnClickListener {
                     JSONObject objectData=new JSONObject(object.getString("data"));
                     switch (statusCode){
                         case "200":{
-//                            String token = objectData.getString("token");
-//
-//                            SharedPrefManager.getInstance(getApplicationContext()).storeToken(token);
                             Intent intent =new Intent(Login.this,PinCode.class);
                             intent.putExtra("phone",phone);
 
