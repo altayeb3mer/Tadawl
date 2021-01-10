@@ -95,7 +95,12 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
         addPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,AddNewPost.class));
+                if (!token.equals("")){
+                    startActivity(new Intent(MainActivity.this,AddNewPost.class));
+                }else{
+                    Toast.makeText(getApplicationContext(), "الرجاء تسجيل الدخول", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         setupViewPager(viewPager);

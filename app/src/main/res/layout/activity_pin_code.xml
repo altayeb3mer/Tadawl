@@ -56,7 +56,6 @@
             app:pinHeight="40dp"
             app:pinLength="4"
             app:cursorVisible="true"
-            app:forceKeyboard="true"
             app:inputType="number"
             app:password="false"
             android:layoutDirection="ltr"
