@@ -3,10 +3,12 @@ package com.example.tadawl.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
     public static NavigationView navigationView;
     LinearLayout nav_drawer_lay,laySearch;
     ImageView addPost;
+    MenuItem menuItemLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +45,31 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
 //        String token = SharedPrefManager.getInstance(this).GetToken();
 //        Toast.makeText(this, token, Toast.LENGTH_SHORT).show();
         init();
+
+    }
+
+
+    RelativeLayout navBtnLay;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        logeddInOrNot();
+    }
+
+    private void logeddInOrNot() {
+        String token = new SharedPrefManager(this).GetToken();
+        if (!token.equals("")){
+            hideLoginItem();
+            navBtnLay.setVisibility(View.VISIBLE);
+        }else {
+            showLoginItem();
+            navBtnLay.setVisibility(View.GONE);
+        }
     }
 
     private void init() {
         laySearch =  findViewById(R.id.laySearch);
+        navBtnLay =  findViewById(R.id.r1);
         laySearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,6 +139,11 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
+            case R.id.nav_menu_login:{
+                startActivity(new Intent(getApplicationContext(),Login.class));
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+            }
 
         }
         return true;
@@ -179,5 +208,15 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
             }
         }
     }
+
+    private void hideLoginItem(){
+        Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.nav_menu_login).setVisible(false);
+    }
+    private void showLoginItem(){
+        Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.nav_menu_login).setVisible(true);
+    }
+
 
 }
