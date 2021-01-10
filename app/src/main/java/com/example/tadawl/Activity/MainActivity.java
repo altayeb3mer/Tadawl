@@ -36,13 +36,12 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
     public static NavigationView navigationView;
     LinearLayout nav_drawer_lay,laySearch;
     ImageView addPost;
-    MenuItem menuItemLogin;
-
+    String token="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_drawer);
-//        String token = SharedPrefManager.getInstance(this).GetToken();
+        token = SharedPrefManager.getInstance(this).GetToken();
 //        Toast.makeText(this, token, Toast.LENGTH_SHORT).show();
         init();
 
@@ -60,10 +59,10 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
         String token = new SharedPrefManager(this).GetToken();
         if (!token.equals("")){
             hideLoginItem();
-            navBtnLay.setVisibility(View.VISIBLE);
+//            navBtnLay.setVisibility(View.VISIBLE);
         }else {
             showLoginItem();
-            navBtnLay.setVisibility(View.GONE);
+//            navBtnLay.setVisibility(View.GONE);
         }
     }
 
@@ -110,17 +109,39 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
                 break;
             }
             case R.id.btn_nav2:{
-                switchToFragment(2);
+                if (!token.equals("")){
+                    switchToFragment(2);
+                }else{
+                    Toast.makeText(this, "الرجاء تسجيل الدخول", Toast.LENGTH_SHORT).show();
+                    switchToFragment(1);
+                }
+
                 break;
             }
             case R.id.btn_nav3:{
-                switchToFragment(3);
+                if (!token.equals("")){
+                    switchToFragment(3);
+                }else{
+                    Toast.makeText(this, "الرجاء تسجيل الدخول", Toast.LENGTH_SHORT).show();
+                    switchToFragment(1);
+                }
+
                 break;
             }
             case R.id.btn_nav4:{
-                switchToFragment(4);
+                if (!token.equals("")){
+                    switchToFragment(4);
+                }else{
+                    Toast.makeText(this, "الرجاء تسجيل الدخول", Toast.LENGTH_SHORT).show();
+                    switchToFragment(1);
+                }
                 break;
             }
+
+
+
+
+
             //nav menu
             case R.id.nav_menu_sc1:{
 //                startActivity(new Intent(getApplicationContext(),Login.class));

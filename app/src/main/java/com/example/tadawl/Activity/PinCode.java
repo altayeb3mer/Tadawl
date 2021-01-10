@@ -60,6 +60,10 @@ public class PinCode extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+    }
 
     private void checkOtp() {
         progressLay.setVisibility(View.VISIBLE);

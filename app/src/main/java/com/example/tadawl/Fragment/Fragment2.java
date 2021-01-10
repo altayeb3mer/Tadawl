@@ -252,7 +252,7 @@ public class Fragment2 extends Fragment {
                     progressLay.setVisibility(View.GONE);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
                 progressLay.setVisibility(View.GONE);

@@ -213,7 +213,7 @@ public class Fragment3 extends Fragment {
                     isLoading = false;
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
 //                    showSnackBarBtn("حدث خطأ الرجاء المحاولة مر اخرى");
                     isLoading = false;
                 }
